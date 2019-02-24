@@ -20,20 +20,12 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
 //        var userService = UserServiceImpl()
         userService
                 .register(mobile, verifyCode, pwd)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(object : Subscriber<Boolean>() {
+                .execute(object : BaseSubscriber<Boolean>() {
                     override fun onNext(t: Boolean) {
+                        super.onNext(t)
                         mView.onRegisterResult(t)
                     }
-
-                    override fun onCompleted() {
-                    }
-
-                    override fun onError(e: Throwable?) {
-                    }
-
-                })
+                }, lifecycleProvider)
     }
 
     fun login(mobile: String, pwd: String) {
@@ -46,6 +38,6 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
                         super.onNext(t)
                         mView.onRegisterResult(t)
                     }
-                })
+                }, lifecycleProvider)
     }
 }
