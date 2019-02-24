@@ -10,6 +10,7 @@ import com.ferrymen.user.injection.component.DaggerUserComponent
 import com.ferrymen.user.injection.module.UserModule
 import com.ferrymen.user.presenter.RegisterPresenter
 import com.ferrymen.user.presenter.view.RegisterView
+import com.kotlin.base.widgets.VerifyButton
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
@@ -42,6 +43,19 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
                     mVerifyCodeEt.text.toString(),
                     mPwdEt.text.toString())
         }
+
+        mGetVerifyCodeBtn.onClick {
+            mGetVerifyCodeBtn.requestSendVerifyNumber()
+        }
+
+//            mGetVerifyCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
+//                override fun onClick() {
+//                    toast("获取验证码")
+//                }
+//
+//            })
+//
+//            mGetVerifyCodeBtn.requestSendVerifyNumber()
     }
 
     override fun onBackPressed() {
