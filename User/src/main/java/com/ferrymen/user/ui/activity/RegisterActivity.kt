@@ -3,6 +3,8 @@ package com.ferrymen.user.ui.activity
 import android.os.Bundle
 import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
+import com.ferrymen.user.injection.component.DaggerUserComponent
+import com.ferrymen.user.injection.module.UserModule
 import com.ferrymen.user.presenter.RegisterPresenter
 import com.ferrymen.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
@@ -18,7 +20,8 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
         setContentView(R.layout.activity_register)
 
 //        mPresenter = RegisterPresenter()
-        mPresenter.mView = this
+//        mPresenter.mView = this
+        initInjection()
 
         btnRegister.setOnClickListener {
 //            Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
@@ -26,5 +29,11 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //            toast("注册")
             mPresenter.reister(mMobileEt.text.toString(), mVerifyCodeEt.text.toString(), mPwdEt.text.toString())
         }
+    }
+
+    private fun initInjection() {
+        // inject done
+        DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
     }
 }
