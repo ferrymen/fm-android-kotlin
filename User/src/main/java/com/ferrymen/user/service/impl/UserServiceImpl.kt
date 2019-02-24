@@ -1,6 +1,7 @@
 package com.ferrymen.user.service.impl
 
 import com.ferrymen.core.data.protocol.BaseResp
+import com.ferrymen.core.ext.convertBoolean
 import com.ferrymen.core.rx.BaseException
 import com.ferrymen.core.rx.BaseFuncBoolean
 import com.ferrymen.user.data.repository.UserRepository
@@ -18,6 +19,6 @@ class UserServiceImpl @Inject constructor(): UserService {
 
         return repository
                 .register(mobile, verifyCode, pwd)
-                .flatMap(BaseFuncBoolean())
+                .convertBoolean()
     }
 }
