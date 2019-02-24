@@ -14,6 +14,7 @@ import javax.inject.Singleton
 @Component(dependencies = arrayOf(AppComponent::class), modules = arrayOf(ActivityModule::class, LifecycleProviderModule::class))
 interface ActivityComponent {
     fun activity(): Activity
+    fun context(): Context
     // error: com.trello.rxlifecycle.LifecycleProvider<?> cannot be provided without an @Provides- or @Produces-annotated method
     fun lifecycleProvider(): LifecycleProvider<*>
 }
