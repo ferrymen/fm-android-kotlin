@@ -1,9 +1,7 @@
-package com.ferrymen.baselibrary.ui.activity
+package com.ferrymen.core.ui.activity
 
-import android.os.Parcel
-import android.os.Parcelable
-import com.ferrymen.baselibrary.presenter.BasePresenter
-import com.ferrymen.baselibrary.presenter.view.BaseView
+import com.ferrymen.core.presenter.BasePresenter
+import com.ferrymen.core.presenter.view.BaseView
 
 open class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), BaseView {
     override fun showLoading() {

@@ -1,4 +1,4 @@
-package com.ferrymen.baselibrary
+package com.ferrymen.core
 
 import org.junit.Test
 

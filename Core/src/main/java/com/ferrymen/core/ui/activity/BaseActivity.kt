@@ -1,4 +1,4 @@
-package com.ferrymen.baselibrary.ui.activity
+package com.ferrymen.core.ui.activity
 
 import android.support.v7.app.AppCompatActivity
 

@@ -1,13 +1,14 @@
 package com.ferrymen.user.presenter
 
-import com.ferrymen.baselibrary.presenter.BasePresenter
+import com.ferrymen.core.presenter.BasePresenter
+import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.user.presenter.service.impl.UserServiceImpl
 import com.ferrymen.user.presenter.view.RegisterView
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class RegisterPresenter: BasePresenter<RegisterView>() {
+class RegisterPresenter : BasePresenter<RegisterView>() {
     fun reister(mobile: String, verifyCode: String, pwd: String) {
         // 业务逻辑
         var userService = UserServiceImpl()
@@ -15,7 +16,7 @@ class RegisterPresenter: BasePresenter<RegisterView>() {
                 .register(mobile, verifyCode, pwd)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(object: Subscriber<Boolean>() {
+                .subscribe(object : Subscriber<Boolean>() {
                     override fun onNext(t: Boolean) {
                         mView.onRegisterResult(t)
                     }
@@ -26,6 +27,21 @@ class RegisterPresenter: BasePresenter<RegisterView>() {
                     override fun onError(e: Throwable?) {
                     }
 
+                })
+    }
+
+    fun login(mobile: String, pwd: String) {
+        // 业务逻辑
+        var userService = UserServiceImpl()
+        userService
+                .register(mobile, "", pwd)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(object : BaseSubscriber<Boolean>() {
+                    override fun onNext(t: Boolean) {
+                        super.onNext(t)
+                        mView.onRegisterResult(t)
+                    }
                 })
     }
 }

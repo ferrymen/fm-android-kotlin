@@ -1,9 +1,7 @@
 package com.ferrymen.user.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.ferrymen.baselibrary.ui.activity.BaseMVPActivity
+import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
 import com.ferrymen.user.presenter.RegisterPresenter
 import com.ferrymen.user.presenter.view.RegisterView

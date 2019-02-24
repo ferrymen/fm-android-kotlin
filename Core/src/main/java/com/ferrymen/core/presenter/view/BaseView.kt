@@ -1,4 +1,4 @@
-package com.ferrymen.baselibrary.presenter.view
+package com.ferrymen.core.presenter.view
 
 interface BaseView {
     fun showLoading()
