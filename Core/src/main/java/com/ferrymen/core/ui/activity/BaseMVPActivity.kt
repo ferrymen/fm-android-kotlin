@@ -9,6 +9,7 @@ import com.ferrymen.core.injection.module.LifecycleProviderModule
 import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.presenter.view.BaseView
 import com.ferrymen.core.widgets.ProgressLoading
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 open abstract class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), BaseView {
@@ -20,7 +21,8 @@ open abstract class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), Bas
         mLoadingDialog.hideLoading()
     }
 
-    override fun onError() {
+    override fun onError(text: String) {
+        toast(text)
     }
 
     @Inject

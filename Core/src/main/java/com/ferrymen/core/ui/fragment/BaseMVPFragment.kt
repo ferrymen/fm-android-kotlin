@@ -18,7 +18,8 @@ open abstract class BaseMVPFragment<T: BasePresenter<*>> : BaseFragment(), BaseV
     override fun hideLoading() {
     }
 
-    override fun onError() {
+    override fun onError(text: String) {
+        
     }
 
     @Inject

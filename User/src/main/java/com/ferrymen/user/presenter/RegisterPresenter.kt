@@ -21,7 +21,7 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
 //        var userService = UserServiceImpl()
 
         if (!checkNetWork()) {
-            println("网络不可用")
+//            println("网络不可用")
             return
         }
 
