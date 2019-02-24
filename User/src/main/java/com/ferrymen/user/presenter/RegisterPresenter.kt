@@ -1,5 +1,6 @@
 package com.ferrymen.user.presenter
 
+import com.ferrymen.core.ext.execute
 import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.user.presenter.service.impl.UserServiceImpl
@@ -35,9 +36,7 @@ class RegisterPresenter : BasePresenter<RegisterView>() {
         var userService = UserServiceImpl()
         userService
                 .register(mobile, "", pwd)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(object : BaseSubscriber<Boolean>() {
+                .execute(object : BaseSubscriber<Boolean>() {
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
                         mView.onRegisterResult(t)
