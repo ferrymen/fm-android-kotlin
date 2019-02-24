@@ -18,9 +18,10 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
     fun reister(mobile: String, verifyCode: String, pwd: String) {
         // 业务逻辑
 //        var userService = UserServiceImpl()
+        mView.showLoading()
         userService
                 .register(mobile, verifyCode, pwd)
-                .execute(object : BaseSubscriber<Boolean>() {
+                .execute(object : BaseSubscriber<Boolean>(mView) {
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
                         if (t)
@@ -34,7 +35,7 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
         var userService = UserServiceImpl()
         userService
                 .register(mobile, "", pwd)
-                .execute(object : BaseSubscriber<Boolean>() {
+                .execute(object : BaseSubscriber<Boolean>(mView) {
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
                         if (t)

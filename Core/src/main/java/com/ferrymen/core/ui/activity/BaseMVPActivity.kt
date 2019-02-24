@@ -8,13 +8,16 @@ import com.ferrymen.core.injection.module.ActivityModule
 import com.ferrymen.core.injection.module.LifecycleProviderModule
 import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.presenter.view.BaseView
+import com.ferrymen.core.widgets.ProgressLoading
 import javax.inject.Inject
 
 open abstract class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), BaseView {
     override fun showLoading() {
+        mLoadingDialog.showLoading()
     }
 
     override fun hideLoading() {
+        mLoadingDialog.hideLoading()
     }
 
     override fun onError() {
@@ -25,10 +28,14 @@ open abstract class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), Bas
 
     lateinit var activityComponent: ActivityComponent
 
+    lateinit var mLoadingDialog: ProgressLoading
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initActivityInjection()
         injectComponent()
+
+        mLoadingDialog = ProgressLoading.create(this)
     }
 
     abstract fun injectComponent()
