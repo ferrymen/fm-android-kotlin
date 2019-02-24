@@ -11,8 +11,14 @@ import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
-    override fun onRegisterResult(result: Boolean) {
-        toast("注册成功")
+    override fun injectComponent() {
+        // inject done
+        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
+        mPresenter.mView = this
+    }
+
+    override fun onRegisterResult(result: String) {
+        toast(result)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +27,7 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
 //        mPresenter = RegisterPresenter()
 //        mPresenter.mView = this
-        initInjection()
+//        initInjection()
 
         btnRegister.setOnClickListener {
 //            Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
@@ -31,9 +37,9 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
         }
     }
 
-    private fun initInjection() {
-        // inject done
-        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
-        mPresenter.mView = this
-    }
+//    private fun initInjection() {
+//        // inject done
+//        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
+//        mPresenter.mView = this
+//    }
 }

@@ -10,7 +10,7 @@ import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.presenter.view.BaseView
 import javax.inject.Inject
 
-open class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), BaseView {
+open abstract class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), BaseView {
     override fun showLoading() {
     }
 
@@ -28,7 +28,10 @@ open class BaseMVPActivity<T: BasePresenter<*>>() : BaseActivity(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initActivityInjection()
+        injectComponent()
     }
+
+    abstract fun injectComponent()
 
     private fun initActivityInjection() {
         activityComponent = DaggerActivityComponent

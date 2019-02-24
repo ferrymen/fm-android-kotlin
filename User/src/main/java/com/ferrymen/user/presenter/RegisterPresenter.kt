@@ -23,7 +23,8 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
                 .execute(object : BaseSubscriber<Boolean>() {
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
-                        mView.onRegisterResult(t)
+                        if (t)
+                        mView.onRegisterResult("注册成功")
                     }
                 }, lifecycleProvider)
     }
@@ -36,7 +37,8 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
                 .execute(object : BaseSubscriber<Boolean>() {
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
-                        mView.onRegisterResult(t)
+                        if (t)
+                        mView.onRegisterResult("登录成功")
                     }
                 }, lifecycleProvider)
     }
