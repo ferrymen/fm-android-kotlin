@@ -6,8 +6,9 @@ import com.ferrymen.user.data.repository.UserRepository
 import com.ferrymen.user.service.UserService
 import rx.Observable
 import rx.functions.Func1
+import javax.inject.Inject
 
-class UserServiceImpl: UserService {
+class UserServiceImpl @Inject constructor(): UserService {
     override fun register(mobile: String, verifyCode: String, pwd: String): Observable<Boolean> {
         val repository = UserRepository()
 
