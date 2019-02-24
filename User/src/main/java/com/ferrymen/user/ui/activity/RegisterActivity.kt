@@ -2,6 +2,7 @@ package com.ferrymen.user.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import com.ferrymen.core.common.AppManager
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
+    private var pressTime: Long = 0
     override fun injectComponent() {
         // inject done
         DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
@@ -39,6 +41,17 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
                     mMobileEt.text.toString(),
                     mVerifyCodeEt.text.toString(),
                     mPwdEt.text.toString())
+        }
+    }
+
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+
+        if (time - pressTime > 2000) {
+            toast("再按一次退出程序")
+            pressTime = time
+        } else {
+            AppManager.instance.exitApp(this)
         }
     }
 
