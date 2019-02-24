@@ -2,6 +2,7 @@ package com.ferrymen.user.service.impl
 
 import com.ferrymen.core.data.protocol.BaseResp
 import com.ferrymen.core.rx.BaseException
+import com.ferrymen.core.rx.BaseFuncBoolean
 import com.ferrymen.user.data.repository.UserRepository
 import com.ferrymen.user.service.UserService
 import rx.Observable
@@ -17,14 +18,6 @@ class UserServiceImpl @Inject constructor(): UserService {
 
         return repository
                 .register(mobile, verifyCode, pwd)
-                .flatMap(object: Func1<BaseResp<String>, Observable<Boolean>> {
-                    override fun call(t: BaseResp<String>): Observable<Boolean> {
-                        if (t.status != 0) {
-                            return Observable.error(BaseException(t.status, t.message))
-                        }
-                        return Observable.just(true)
-                    }
-
-                })
+                .flatMap(BaseFuncBoolean())
     }
 }
