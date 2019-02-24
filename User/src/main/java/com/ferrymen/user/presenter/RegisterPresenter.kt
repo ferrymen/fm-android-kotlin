@@ -6,6 +6,7 @@ import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.user.service.impl.UserServiceImpl
 import com.ferrymen.user.presenter.view.RegisterView
 import com.ferrymen.user.service.UserService
+import com.kotlin.base.utils.NetWorkUtils
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -18,6 +19,12 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
     fun reister(mobile: String, verifyCode: String, pwd: String) {
         // 业务逻辑
 //        var userService = UserServiceImpl()
+
+        if (!checkNetWork()) {
+            println("网络不可用")
+            return
+        }
+
         mView.showLoading()
         userService
                 .register(mobile, verifyCode, pwd)
