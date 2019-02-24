@@ -26,7 +26,7 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //            Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
 //            toast("Hi there!")
 //            toast("注册")
-            mPresenter.reister("", "")
+            mPresenter.reister("", "", "")
         }
     }
 }

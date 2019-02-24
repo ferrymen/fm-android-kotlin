@@ -52,6 +52,11 @@ dependencies {
     // Coroutine listeners for Anko Layouts
 //    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
 //    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+//    api "io.reactivex.rxjava2:rxjava:$rx_java_version"
+//    api "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+//    api "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    api "io.reactivex:rxkotlin:$rx_kotlin_version"
+    api "io.reactivex:rxandroid:$rx_android_version"
 }
 repositories {
     mavenCentral()
