@@ -31,18 +31,15 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter.mView = this
 //        initInjection()
 
-        btnRegister.onClick(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-//                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
+        btnRegister.onClick {
+            //                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
 //            toast("Hi there!")
 //            toast("注册")
-                mPresenter.reister(
-                        mMobileEt.text.toString(),
-                        mVerifyCodeEt.text.toString(),
-                        mPwdEt.text.toString())
-            }
-
-        })
+            mPresenter.reister(
+                    mMobileEt.text.toString(),
+                    mVerifyCodeEt.text.toString(),
+                    mPwdEt.text.toString())
+        }
     }
 
 //    private fun initInjection() {

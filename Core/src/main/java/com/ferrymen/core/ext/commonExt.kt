@@ -18,3 +18,7 @@ fun <T>Observable<T>.execute(subscriber: BaseSubscriber<T>, lifecycleProvider: L
 fun View.onClick(listener: View.OnClickListener) {
     this.setOnClickListener(listener)
 }
+
+fun  View.onClick(method: () -> Unit) {
+    this.setOnClickListener { method() }
+}
