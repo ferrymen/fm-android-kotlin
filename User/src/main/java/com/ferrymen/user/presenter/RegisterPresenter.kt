@@ -3,7 +3,7 @@ package com.ferrymen.user.presenter
 import com.ferrymen.core.ext.execute
 import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.rx.BaseSubscriber
-import com.ferrymen.user.presenter.service.impl.UserServiceImpl
+import com.ferrymen.user.service.impl.UserServiceImpl
 import com.ferrymen.user.presenter.view.RegisterView
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers

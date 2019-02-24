@@ -1,4 +1,4 @@
-package com.ferrymen.user.presenter.service
+package com.ferrymen.user.service
 import rx.Observable
 
 interface UserService {
