@@ -17,7 +17,7 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        mPresenter = RegisterPresenter()
+//        mPresenter = RegisterPresenter()
         mPresenter.mView = this
 
         btnRegister.setOnClickListener {

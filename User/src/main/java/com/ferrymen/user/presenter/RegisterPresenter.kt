@@ -8,8 +8,9 @@ import com.ferrymen.user.presenter.view.RegisterView
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 
-class RegisterPresenter : BasePresenter<RegisterView>() {
+class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
     fun reister(mobile: String, verifyCode: String, pwd: String) {
         // 业务逻辑
         var userService = UserServiceImpl()
