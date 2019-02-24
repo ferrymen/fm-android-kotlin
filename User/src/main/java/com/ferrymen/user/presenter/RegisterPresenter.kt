@@ -5,15 +5,19 @@ import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.user.service.impl.UserServiceImpl
 import com.ferrymen.user.presenter.view.RegisterView
+import com.ferrymen.user.service.UserService
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
+    @Inject
+    lateinit var userService: UserService
+
     fun reister(mobile: String, verifyCode: String, pwd: String) {
         // 业务逻辑
-        var userService = UserServiceImpl()
+//        var userService = UserServiceImpl()
         userService
                 .register(mobile, verifyCode, pwd)
                 .observeOn(AndroidSchedulers.mainThread())

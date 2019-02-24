@@ -9,8 +9,11 @@ import rx.functions.Func1
 import javax.inject.Inject
 
 class UserServiceImpl @Inject constructor(): UserService {
+    @Inject
+    lateinit var repository: UserRepository
+
     override fun register(mobile: String, verifyCode: String, pwd: String): Observable<Boolean> {
-        val repository = UserRepository()
+//        val repository = UserRepository()
 
         return repository
                 .register(mobile, verifyCode, pwd)
