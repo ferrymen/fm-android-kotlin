@@ -1,6 +1,8 @@
 package com.ferrymen.user.ui.activity
 
 import android.os.Bundle
+import android.view.View
+import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
 import com.ferrymen.user.injection.component.DaggerUserComponent
@@ -29,12 +31,18 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter.mView = this
 //        initInjection()
 
-        btnRegister.setOnClickListener {
-//            Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
+        btnRegister.onClick(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+//                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
 //            toast("Hi there!")
 //            toast("注册")
-            mPresenter.reister(mMobileEt.text.toString(), mVerifyCodeEt.text.toString(), mPwdEt.text.toString())
-        }
+                mPresenter.reister(
+                        mMobileEt.text.toString(),
+                        mVerifyCodeEt.text.toString(),
+                        mPwdEt.text.toString())
+            }
+
+        })
     }
 
 //    private fun initInjection() {
