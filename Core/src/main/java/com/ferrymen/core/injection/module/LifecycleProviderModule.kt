@@ -1,15 +1,15 @@
 package com.ferrymen.core.injection.module
 
 import android.app.Activity
+import com.trello.rxlifecycle.LifecycleProvider
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-@Singleton
-class LifecycleModule(private val activity: Activity) {
+class LifecycleProviderModule(private val lifecycleProvider: LifecycleProvider<*>) {
     @Provides
-    fun providesActivity(): Activity {
-        return activity
+    fun providesLifecycleProvider(): LifecycleProvider<*> {
+        return lifecycleProvider
     }
 }
