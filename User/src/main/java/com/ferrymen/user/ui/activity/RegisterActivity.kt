@@ -96,7 +96,7 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, Vie
                 mVerifyCodeBtn.requestSendVerifyNumber()
                 toast("发送验证码成功！")
             }
-            R.id.mVerifyCodeBtn -> {
+            R.id.mRegisterBtn -> {
                 mPresenter.reister(
                     mMobileEt.text.toString(),
                     mVerifyCodeEt.text.toString(),
