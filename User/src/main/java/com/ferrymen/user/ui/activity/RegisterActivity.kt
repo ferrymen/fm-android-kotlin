@@ -63,10 +63,14 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, Vie
 //
 //            mGetVerifyCodeBtn.requestSendVerifyNumber()
 
-            mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
-            mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
-            mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
-            mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
+//            mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
+//            mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
+//            mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
+//            mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
+        mRegisterBtn.enable(mMobileEt) { isBtnEnable() }
+        mRegisterBtn.enable(mVerifyCodeEt) { isBtnEnable() }
+        mRegisterBtn.enable(mPwdEt) { isBtnEnable() }
+        mRegisterBtn.enable(mPwdConfirmEt) { isBtnEnable() }
     }
 
     override fun onBackPressed() {
