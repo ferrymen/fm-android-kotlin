@@ -3,6 +3,7 @@ package com.ferrymen.user.ui.activity
 import android.os.Bundle
 import android.view.View
 import com.ferrymen.core.common.AppManager
+import com.ferrymen.core.ext.enable
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
@@ -13,7 +14,7 @@ import com.ferrymen.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
-class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
+class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
     private var pressTime: Long = 0
     override fun injectComponent() {
         // inject done
@@ -33,19 +34,25 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter.mView = this
 //        initInjection()
 
-        mRegisterBtn.onClick {
-            //                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
-//            toast("Hi there!")
-//            toast("注册")
-            mPresenter.reister(
-                    mMobileEt.text.toString(),
-                    mVerifyCodeEt.text.toString(),
-                    mPwdEt.text.toString())
-        }
+        initView()
+    }
 
-        mVerifyCodeBtn.onClick {
-            mVerifyCodeBtn.requestSendVerifyNumber()
-        }
+    private fun initView() {
+        mRegisterBtn.onClick(this)
+//        mRegisterBtn.onClick {
+//            //                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
+////            toast("Hi there!")
+////            toast("注册")
+//            mPresenter.reister(
+//                    mMobileEt.text.toString(),
+//                    mVerifyCodeEt.text.toString(),
+//                    mPwdEt.text.toString())
+//        }
+
+        mVerifyCodeBtn.onClick(this)
+//        mVerifyCodeBtn.onClick {
+//            mVerifyCodeBtn.requestSendVerifyNumber()
+//        }
 
 //            mGetVerifyCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
 //                override fun onClick() {
@@ -55,6 +62,11 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //            })
 //
 //            mGetVerifyCodeBtn.requestSendVerifyNumber()
+
+            mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
+            mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
+            mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
+            mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
     }
 
     override fun onBackPressed() {
@@ -73,4 +85,26 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
 //        mPresenter.mView = this
 //    }
+
+    override fun onClick(v: View) {
+        when(v.id) {
+            R.id.mVerifyCodeBtn -> {
+                mVerifyCodeBtn.requestSendVerifyNumber()
+                toast("发送验证码成功！")
+            }
+            R.id.mVerifyCodeBtn -> {
+                mPresenter.reister(
+                    mMobileEt.text.toString(),
+                    mVerifyCodeEt.text.toString(),
+                    mPwdEt.text.toString())
+            }
+        }
+    }
+
+    private fun isBtnEnable(): Boolean {
+        return mMobileEt.text.isNullOrEmpty().not() &&
+                mVerifyCodeEt.text.isNullOrEmpty().not() &&
+                mPwdEt.text.isNullOrEmpty().not() &&
+                mPwdConfirmEt.text.isNullOrEmpty().not()
+    }
 }
