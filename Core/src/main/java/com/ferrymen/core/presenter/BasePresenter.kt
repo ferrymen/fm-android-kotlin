@@ -2,7 +2,7 @@ package com.ferrymen.core.presenter
 
 import android.content.Context
 import com.ferrymen.core.presenter.view.BaseView
-import com.kotlin.base.utils.NetWorkUtils
+import com.ferrymen.core.widgets.NetWorkUtils
 import com.trello.rxlifecycle.LifecycleProvider
 import javax.inject.Inject
 

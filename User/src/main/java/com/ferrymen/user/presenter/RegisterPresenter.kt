@@ -6,7 +6,6 @@ import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.user.service.impl.UserServiceImpl
 import com.ferrymen.user.presenter.view.RegisterView
 import com.ferrymen.user.service.UserService
-import com.kotlin.base.utils.NetWorkUtils
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers

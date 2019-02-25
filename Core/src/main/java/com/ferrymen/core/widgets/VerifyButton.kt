@@ -1,4 +1,4 @@
-package com.kotlin.base.widgets
+package com.ferrymen.core.widgets
 
 import android.content.Context
 import android.os.Handler

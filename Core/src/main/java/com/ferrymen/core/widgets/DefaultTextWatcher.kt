@@ -1,4 +1,4 @@
-package com.kotlin.base.widgets
+package com.ferrymen.core.widgets
 
 import android.text.Editable
 import android.text.TextWatcher

@@ -10,7 +10,6 @@ import com.ferrymen.user.injection.component.DaggerUserComponent
 import com.ferrymen.user.injection.module.UserModule
 import com.ferrymen.user.presenter.RegisterPresenter
 import com.ferrymen.user.presenter.view.RegisterView
-import com.kotlin.base.widgets.VerifyButton
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
@@ -34,7 +33,7 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 //        mPresenter.mView = this
 //        initInjection()
 
-        btnRegister.onClick {
+        mRegisterBtn.onClick {
             //                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
 //            toast("Hi there!")
 //            toast("注册")
@@ -44,8 +43,8 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
                     mPwdEt.text.toString())
         }
 
-        mGetVerifyCodeBtn.onClick {
-            mGetVerifyCodeBtn.requestSendVerifyNumber()
+        mVerifyCodeBtn.onClick {
+            mVerifyCodeBtn.requestSendVerifyNumber()
         }
 
 //            mGetVerifyCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
