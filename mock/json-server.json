@@ -1,0 +1,6 @@
+{
+  "port": "2002",
+  "watch": true,
+  "routes": "routes.json",
+  "middlewares": "middlewares.js"
+}
