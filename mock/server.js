@@ -1,14 +1,18 @@
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+var fs = require('fs'),
+  https = require('https'),
+  jsonServer = require('json-server'),
+  server = jsonServer.create(),
+  router = jsonServer.router('db.json'),
+  middlewares = jsonServer.defaults();
 
-server.use(middlewares)
-server.use((req, res, next) => {
-    req.method = "GET"
-    next()
-})
-server.use(router)
-server.listen(3000, () => {
-  console.log('JSON Server is running')
-})
+var options = {
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem')
+};
+
+server.use(middlewares);
+server.use(router);
+
+https.createServer(options, server).listen(3002, function() {
+  console.log("json-server started on port " + 3002);
+});
