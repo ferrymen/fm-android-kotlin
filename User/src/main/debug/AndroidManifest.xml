@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--ssl https-->
+    <!--android:networkSecurityConfig="@xml/network_security_config"-->
     <application
         android:allowBackup="true"
         android:label="@string/app_name"

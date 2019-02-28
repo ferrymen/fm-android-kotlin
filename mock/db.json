@@ -1,6 +1,7 @@
 {
   "userRegister": {
-    "status": 0,
-    "message": "接口调用成功"
+    "status": -0,
+    "messgae": "接口调用成功",
+    "data": "{\"node\": \"0202\"}"
   }
 }
