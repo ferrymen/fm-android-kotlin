@@ -99,8 +99,9 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, Vie
             R.id.mRegisterBtn -> {
                 mPresenter.reister(
                     mMobileEt.text.toString(),
-                    mVerifyCodeEt.text.toString(),
-                    mPwdEt.text.toString())
+                    mPwdEt.text.toString(),
+                        mVerifyCodeEt.text.toString()
+                )
             }
         }
     }

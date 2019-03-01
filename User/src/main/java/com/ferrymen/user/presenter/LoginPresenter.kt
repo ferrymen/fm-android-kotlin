@@ -3,6 +3,8 @@ package com.ferrymen.user.presenter
 import com.ferrymen.core.ext.execute
 import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.rx.BaseSubscriber
+import com.ferrymen.user.data.protocol.UserInfo
+import com.ferrymen.user.presenter.view.LoginView
 import com.ferrymen.user.service.impl.UserServiceImpl
 import com.ferrymen.user.presenter.view.RegisterView
 import com.ferrymen.user.service.UserService
@@ -11,11 +13,11 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
 
-class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
+class LoginPresenter @Inject constructor(): BasePresenter<LoginView>() {
     @Inject
     lateinit var userService: UserService
 
-    fun reister(mobile: String, pwd: String, verifyCode: String) {
+    fun login(mobile: String, pwd: String, pushId: String) {
         // 业务逻辑
 //        var userService = UserServiceImpl()
 
@@ -26,12 +28,11 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
 
         mView.showLoading()
         userService
-                .register(mobile, pwd, verifyCode)
-                .execute(object : BaseSubscriber<Boolean>(mView) {
-                    override fun onNext(t: Boolean) {
+                .login(mobile, pwd, pushId)
+                .execute(object : BaseSubscriber<UserInfo>(mView) {
+                    override fun onNext(t: UserInfo) {
                         super.onNext(t)
-                        if (t)
-                        mView.onRegisterResult("注册成功")
+                        mView.onLoginResult(t)
                     }
                 }, lifecycleProvider)
     }

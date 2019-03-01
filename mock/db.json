@@ -1,7 +1,12 @@
 {
   "userRegister": {
-    "status": -0,
-    "messgae": "接口调用成功",
-    "data": "{\"node\": \"0202\"}"
+    "status": 0,
+    "message": "接口调用成功",
+    "data": ""
+  },
+  "userLogin": {
+    "status": 0,
+    "message": "接口调用成功",
+    "data": {}
   }
 }

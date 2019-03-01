@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_security_config"
         android:name="com.ferrymen.core.common.BaseApplication"> <!--android.app.Application cannot be cast to com.ferrymen.core.common.BaseApplication-->
-        <activity android:name=".ui.activity.RegisterActivity">
+        <activity android:name=".ui.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

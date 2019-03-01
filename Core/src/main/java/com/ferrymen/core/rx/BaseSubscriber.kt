@@ -15,6 +15,8 @@ open class BaseSubscriber<T>(val baseView: BaseView): Subscriber<T>() {
         baseView.hideLoading()
         if (e is BaseException) {
             baseView.onError((e.msg))
+        } else {
+            throw e!!
         }
     }
 }

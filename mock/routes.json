@@ -1,3 +1,4 @@
 {
-  "/user/register": "/userRegister"
+  "/user/register": "/userRegister",
+  "/user/login": "/userLogin"
 }
