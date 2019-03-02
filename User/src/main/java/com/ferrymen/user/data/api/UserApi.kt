@@ -1,9 +1,7 @@
 package com.ferrymen.user.data.api
 
 import com.ferrymen.core.data.protocol.BaseResp
-import com.ferrymen.user.data.protocol.LoginReq
-import com.ferrymen.user.data.protocol.RegisterReq
-import com.ferrymen.user.data.protocol.UserInfo
+import com.ferrymen.user.data.protocol.*
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable
@@ -30,4 +28,10 @@ interface UserApi {
      */
     @POST("user/login")
     fun login(@Body req: LoginReq): Observable<BaseResp<UserInfo>>
+
+    @POST("user/forgetPwd")
+    fun forgetPwd(@Body req: ForgetPwdReq): Observable<BaseResp<String>>
+
+    @POST("user/resetPwd")
+    fun resetPwd(@Body req: ResetPwdReq): Observable<BaseResp<String>>
 }
