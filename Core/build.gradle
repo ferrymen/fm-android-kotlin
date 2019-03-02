@@ -98,7 +98,7 @@ dependencies {
     // Alert View
     api "com.bigkoo:alertview:$alert_view_version"
 
-    implementation "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version"
+    api "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version"
 }
 repositories {
     mavenCentral()
