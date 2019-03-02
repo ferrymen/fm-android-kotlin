@@ -4,5 +4,5 @@ import com.ferrymen.core.presenter.view.BaseView
 import com.ferrymen.user.data.protocol.UserInfo
 
 interface ForgetPwdView: BaseView {
-    fun onRegisterResult(result: String)
+    fun onForgetPwdResult(result: String)
 }
