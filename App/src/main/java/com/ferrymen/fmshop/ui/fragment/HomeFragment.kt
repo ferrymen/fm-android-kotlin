@@ -10,10 +10,12 @@ import com.ferrymen.core.widgets.BannerImageLoader
 import com.ferrymen.fmshop.R
 import com.ferrymen.fmshop.common.*
 import com.ferrymen.fmshop.ui.adapter.HomeDiscountAdapter
+import com.ferrymen.fmshop.ui.adapter.TopicAdapter
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home.*
+import me.crosswall.lib.coverflow.CoverFlow
 import org.jetbrains.anko.find
 
 class HomeFragment: BaseFragment() {
@@ -32,6 +34,7 @@ class HomeFragment: BaseFragment() {
         initBanner()
         initNews()
         initDiscount()
+        initTopic()
     }
 
     private fun initBanner() {
@@ -79,5 +82,14 @@ class HomeFragment: BaseFragment() {
                 HOME_DISCOUNT_FOUR,
                 HOME_DISCOUNT_FIVE
         ))
+    }
+
+    private fun initTopic() {
+        //话题
+        mTopicPager.adapter = TopicAdapter(context!!, listOf(HOME_TOPIC_ONE, HOME_TOPIC_TWO, HOME_TOPIC_THREE))
+        mTopicPager.currentItem = 1
+        mTopicPager.offscreenPageLimit = 5
+
+        CoverFlow.Builder().with(mTopicPager).scale(0.3f).pagerMargin(-30.0f).spaceSize(0.0f).build()
     }
 }

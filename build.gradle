@@ -24,6 +24,8 @@ buildscript {
 
     ext.triangle_label_view_version = "1.1.2"
 
+    ext.coverflow_version = "release-v1.0.4"
+
     repositories {
         google()
         jcenter()

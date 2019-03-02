@@ -103,6 +103,8 @@ dependencies {
     api "com.youth.banner:banner:$banner_verion"
 
     api "com.github.shts:TriangleLabelView:$triangle_label_view_version"
+
+    api "com.github.crosswall:Android-Coverflow:$coverflow_version"
 }
 repositories {
     mavenCentral()

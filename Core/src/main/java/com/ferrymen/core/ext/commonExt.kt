@@ -3,13 +3,14 @@ package com.ferrymen.core.ext
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import com.ferrymen.core.data.protocol.BaseResp
 import com.ferrymen.core.rx.BaseFunc
 import com.ferrymen.core.rx.BaseFuncBoolean
 import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.core.widgets.DefaultTextWatcher
+import com.ferrymen.core.widgets.GlideUtils
 import com.trello.rxlifecycle.LifecycleProvider
-import com.trello.rxlifecycle.kotlin.bindToLifecycle
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -45,4 +46,11 @@ fun Button.enable(et: EditText, method: () -> Boolean) {
             btn.isEnabled = method()
         }
     })
+}
+
+/*
+    ImageView加载网络图片
+ */
+fun ImageView.loadUrl(url: String) {
+    GlideUtils.loadUrlImage(context, url, this)
 }
