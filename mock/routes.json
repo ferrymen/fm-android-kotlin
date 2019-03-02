@@ -1,5 +1,6 @@
 {
   "/user/register": "/userRegister",
   "/user/login": "/userLogin",
-  "/user/forgetPwd": "/userForgetPwd"
+  "/user/forgetPwd": "/userForgetPwd",
+  "/user/resetPwd": "/userResetPwd"
 }

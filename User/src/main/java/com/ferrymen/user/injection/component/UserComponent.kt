@@ -6,6 +6,7 @@ import com.ferrymen.user.injection.module.UserModule
 import com.ferrymen.user.ui.activity.ForgetPwdActivity
 import com.ferrymen.user.ui.activity.LoginActivity
 import com.ferrymen.user.ui.activity.RegisterActivity
+import com.ferrymen.user.ui.activity.ResetPwdActivity
 import dagger.Component
 
 @PerComponentScope
@@ -14,4 +15,5 @@ interface UserComponent {
     fun inject(activity: RegisterActivity)
     fun inject(activity: LoginActivity)
     fun inject(activity: ForgetPwdActivity)
+    fun inject(activity: ResetPwdActivity)
 }

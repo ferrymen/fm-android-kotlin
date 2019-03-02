@@ -13,5 +13,10 @@
     "status": 0,
     "message": "接口调用成功",
     "data": ""
+  },
+  "userResetPwd": {
+    "status": 0,
+    "message": "接口调用成功",
+    "data": ""
   }
 }

@@ -14,6 +14,7 @@ import com.ferrymen.user.presenter.RegisterPresenter
 import com.ferrymen.user.presenter.view.ForgetPwdView
 import com.ferrymen.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_forget_pwd.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class ForgetPwdActivity : BaseMVPActivity<ForgetPwdPresenter>(), ForgetPwdView, View.OnClickListener {
@@ -62,5 +63,6 @@ class ForgetPwdActivity : BaseMVPActivity<ForgetPwdPresenter>(), ForgetPwdView, 
 
     override fun onForgetPwdResult(result: String) {
         toast(result)
+        startActivity<ResetPwdActivity>("mobile" to mMobileEt.text.toString())
     }
 }
