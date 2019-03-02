@@ -3,6 +3,12 @@
     style="@style/MatchMatch.Vertical"
     android:gravity="bottom">
 
+    <FrameLayout
+        android:id="@+id/mContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
     <com.ferrymen.core.widgets.BottomNavBar
         android:id="@+id/mBottomNavBar"
         style="@style/MatchWrap"

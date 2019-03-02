@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         mBottomNavBar.checkMsgBadge(false)
         mBottomNavBar.checkCartBadge(20)
-        Observable.timer(2, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({mBottomNavBar.checkMsgBadge(true)})
-        Observable.timer(5, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({mBottomNavBar.checkCartBadge(0)})
+//        Observable.timer(2, TimeUnit.SECONDS)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({mBottomNavBar.checkMsgBadge(true)})
+//        Observable.timer(5, TimeUnit.SECONDS)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({mBottomNavBar.checkCartBadge(0)})
 
     }
 }

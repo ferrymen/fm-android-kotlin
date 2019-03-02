@@ -99,6 +99,8 @@ dependencies {
     api "com.bigkoo:alertview:$alert_view_version"
 
     api "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version"
+
+    api "com.youth.banner:banner:$banner_verion"
 }
 repositories {
     mavenCentral()
