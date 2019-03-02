@@ -101,6 +101,8 @@ dependencies {
     api "com.ashokvarma.android:bottom-navigation-bar:$bottom_navigation_bar_version"
 
     api "com.youth.banner:banner:$banner_verion"
+
+    api "com.github.shts:TriangleLabelView:$triangle_label_view_version"
 }
 repositories {
     mavenCentral()

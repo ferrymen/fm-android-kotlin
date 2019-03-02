@@ -22,6 +22,8 @@ buildscript {
 
     ext.banner_verion = "1.4.10"
 
+    ext.triangle_label_view_version = "1.1.2"
+
     repositories {
         google()
         jcenter()
@@ -39,6 +41,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 
