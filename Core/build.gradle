@@ -94,7 +94,7 @@ dependencies {
     // Take Photo
     implementation "com.jph.takephoto:takephoto_library:$take_photo_version"
     // Alert View
-    implementation "com.bigkoo:alertview:$alert_view_version"
+    api "com.bigkoo:alertview:$alert_view_version"
 }
 repositories {
     mavenCentral()

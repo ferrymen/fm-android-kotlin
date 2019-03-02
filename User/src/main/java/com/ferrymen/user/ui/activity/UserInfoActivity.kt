@@ -1,19 +1,16 @@
 package com.ferrymen.user.ui.activity
 
 import android.os.Bundle
-import android.view.View
-import com.ferrymen.core.common.AppManager
-import com.ferrymen.core.ext.enable
+import com.bigkoo.alertview.AlertView
+import com.bigkoo.alertview.OnItemClickListener
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
 import com.ferrymen.user.injection.component.DaggerUserComponent
 import com.ferrymen.user.injection.module.UserModule
-import com.ferrymen.user.presenter.RegisterPresenter
 import com.ferrymen.user.presenter.UserInfoPresenter
-import com.ferrymen.user.presenter.view.RegisterView
 import com.ferrymen.user.presenter.view.UserInfoView
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_user_info.*
 import org.jetbrains.anko.toast
 
 class UserInfoActivity : BaseMVPActivity<UserInfoPresenter>(), UserInfoView {
@@ -32,6 +29,22 @@ class UserInfoActivity : BaseMVPActivity<UserInfoPresenter>(), UserInfoView {
     }
 
     private fun initView() {
+        mUserIconView.onClick {
+            showAlertView()
+        }
+    }
+
+    private fun showAlertView() {
+        AlertView("选择图片", "", "取消", null, arrayOf("拍照", "相册"), this,
+                AlertView.Style.ActionSheet, object : OnItemClickListener {
+            override fun onItemClick(o: Any?, position: Int) {
+                when(position) {
+                    0 -> toast("拍照")
+                    1 -> toast("相册")
+                }
+            }
+
+        }).show()
     }
 }
 
