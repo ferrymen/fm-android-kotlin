@@ -1,6 +1,7 @@
 package com.ferrymen.fmshop.ui.fragment
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.ferrymen.core.ui.fragment.BaseFragment
 import com.ferrymen.core.widgets.BannerImageLoader
 import com.ferrymen.fmshop.R
 import com.ferrymen.fmshop.common.*
+import com.ferrymen.fmshop.ui.adapter.HomeDiscountAdapter
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
@@ -29,6 +31,7 @@ class HomeFragment: BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initBanner()
         initNews()
+        initDiscount()
     }
 
     private fun initBanner() {
@@ -44,10 +47,6 @@ class HomeFragment: BaseFragment() {
         mHomeBanner.start()
     }
 
-    private fun initNews() {
-        mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场\", \"新用户立领1000元优惠券"))
-    }
-
 //    private fun initBanner(view: View) {
 //        mHomeBanner = view.find(R.id.mHomeBanner)
 //        mHomeBanner.setImageLoader(BannerImageLoader())
@@ -61,4 +60,24 @@ class HomeFragment: BaseFragment() {
 //        mHomeBanner.setIndicatorGravity(BannerConfig.RIGHT)
 //        mHomeBanner.start()
 //    }
+
+    private fun initNews() {
+        mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场\", \"新用户立领1000元优惠券"))
+    }
+
+    private fun initDiscount() {
+        val manager = LinearLayoutManager(context)
+        manager.orientation = LinearLayoutManager.HORIZONTAL
+        mHomeDiscountRv.layoutManager = manager
+
+        val discountAdapter = HomeDiscountAdapter(activity!!)
+        mHomeDiscountRv.adapter = discountAdapter
+        discountAdapter.setData(mutableListOf(
+                HOME_DISCOUNT_ONE,
+                HOME_DISCOUNT_TWO,
+                HOME_DISCOUNT_THREE,
+                HOME_DISCOUNT_FOUR,
+                HOME_DISCOUNT_FIVE
+        ))
+    }
 }
