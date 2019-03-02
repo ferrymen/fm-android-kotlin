@@ -3,6 +3,8 @@
     package="com.ferrymen.user">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--https://stackoverflow.com/questions/35973235/android-permission-denial-starting-intent-with-revoked-permission-android-perm-->
+    <!--<uses-permission android:name="android.permission.CAMERA" />-->
 
     <!--ssl https-->
     <!--android:networkSecurityConfig="@xml/network_security_config"-->

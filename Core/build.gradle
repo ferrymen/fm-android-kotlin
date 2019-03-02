@@ -92,7 +92,7 @@ dependencies {
     // Circle ImageView
     implementation "de.hdodenhof:circleimageview:$circle_imageView_version"
     // Take Photo
-    implementation "com.jph.takephoto:takephoto_library:$take_photo_version"
+    api "com.jph.takephoto:takephoto_library:$take_photo_version"
     // Alert View
     api "com.bigkoo:alertview:$alert_view_version"
 }
