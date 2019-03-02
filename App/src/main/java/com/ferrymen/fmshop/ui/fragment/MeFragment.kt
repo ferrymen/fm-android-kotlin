@@ -9,6 +9,7 @@ import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.fragment.BaseFragment
 import com.ferrymen.core.widgets.AppPrefsUtils
 import com.ferrymen.fmshop.R
+import com.ferrymen.fmshop.ui.activity.SettingActivity
 import com.ferrymen.provider.common.ProviderConstant
 import com.ferrymen.provider.common.isLogined
 import com.ferrymen.user.ui.activity.LoginActivity
@@ -42,12 +43,16 @@ class MeFragment: BaseFragment(), View.OnClickListener {
                     startActivity<LoginActivity>()
                 }
             }
+            R.id.mSettingTv -> {
+                startActivity<SettingActivity>()
+            }
         }
     }
 
     private fun initView() {
         mUserIconIv.onClick(this)
         mUserNameTv.onClick(this)
+        mSettingTv.onClick(this)
     }
 
     private fun loadData() {
