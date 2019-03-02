@@ -9,12 +9,15 @@ import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.user.R
 import com.ferrymen.user.injection.component.DaggerUserComponent
 import com.ferrymen.user.injection.module.UserModule
+import com.ferrymen.user.presenter.ForgetPwdPresenter
 import com.ferrymen.user.presenter.RegisterPresenter
+import com.ferrymen.user.presenter.view.ForgetPwdView
 import com.ferrymen.user.presenter.view.RegisterView
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_forget_pwd.*
 import org.jetbrains.anko.toast
 
-class ForgetPwdActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
+class ForgetPwdActivity : BaseMVPActivity<ForgetPwdPresenter>(), ForgetPwdView, View.OnClickListener {
+
     private var pressTime: Long = 0
     override fun injectComponent() {
         // inject done
@@ -22,73 +25,20 @@ class ForgetPwdActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, Vi
         mPresenter.mView = this
     }
 
-    override fun onRegisterResult(result: String) {
-        toast(result)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-
-//        mPresenter = RegisterPresenter()
-//        mPresenter.mView = this
-//        initInjection()
+        setContentView(R.layout.activity_forget_pwd)
 
         initView()
     }
 
     private fun initView() {
-        mRegisterBtn.onClick(this)
-//        mRegisterBtn.onClick {
-//            //                Toast.makeText(this, "注册", Toast.LENGTH_SHORT).show()
-////            toast("Hi there!")
-////            toast("注册")
-//            mPresenter.reister(
-//                    mMobileEt.text.toString(),
-//                    mVerifyCodeEt.text.toString(),
-//                    mPwdEt.text.toString())
-//        }
-
+        mNextBtn.onClick(this)
         mVerifyCodeBtn.onClick(this)
-//        mVerifyCodeBtn.onClick {
-//            mVerifyCodeBtn.requestSendVerifyNumber()
-//        }
 
-//            mGetVerifyCodeBtn.setOnVerifyBtnClick(object : VerifyButton.OnVerifyBtnClick {
-//                override fun onClick() {
-//                    toast("获取验证码")
-//                }
-//
-//            })
-//
-//            mGetVerifyCodeBtn.requestSendVerifyNumber()
-
-//            mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
-//            mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
-//            mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
-//            mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
-        mRegisterBtn.enable(mMobileEt) { isBtnEnable() }
-        mRegisterBtn.enable(mVerifyCodeEt) { isBtnEnable() }
-        mRegisterBtn.enable(mPwdEt) { isBtnEnable() }
-        mRegisterBtn.enable(mPwdConfirmEt) { isBtnEnable() }
+        mNextBtn.enable(mMobileEt) { isBtnEnable() }
+        mNextBtn.enable(mVerifyCodeEt) { isBtnEnable() }
     }
-
-    override fun onBackPressed() {
-        val time = System.currentTimeMillis()
-
-        if (time - pressTime > 2000) {
-            toast("再按一次退出程序")
-            pressTime = time
-        } else {
-            AppManager.instance.exitApp(this)
-        }
-    }
-
-//    private fun initInjection() {
-//        // inject done
-//        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
-//        mPresenter.mView = this
-//    }
 
     override fun onClick(v: View) {
         when(v.id) {
@@ -96,11 +46,10 @@ class ForgetPwdActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, Vi
                 mVerifyCodeBtn.requestSendVerifyNumber()
                 toast("发送验证码成功！")
             }
-            R.id.mRegisterBtn -> {
-                mPresenter.reister(
+            R.id.mNextBtn -> {
+                mPresenter.forgetPwd(
                     mMobileEt.text.toString(),
-                    mPwdEt.text.toString(),
-                        mVerifyCodeEt.text.toString()
+                    mVerifyCodeEt.text.toString()
                 )
             }
         }
@@ -108,8 +57,10 @@ class ForgetPwdActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, Vi
 
     private fun isBtnEnable(): Boolean {
         return mMobileEt.text.isNullOrEmpty().not() &&
-                mVerifyCodeEt.text.isNullOrEmpty().not() &&
-                mPwdEt.text.isNullOrEmpty().not() &&
-                mPwdConfirmEt.text.isNullOrEmpty().not()
+                mVerifyCodeEt.text.isNullOrEmpty().not()
+    }
+
+    override fun onForgetPwdResult(result: String) {
+        toast(result)
     }
 }

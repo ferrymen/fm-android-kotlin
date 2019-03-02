@@ -45,6 +45,7 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
 
         mLoginBtn.onClick(this)
         mHeaderBar.getRightView().onClick(this)
+        mForgetPwdTv.onClick(this)
     }
 
     override fun onClick(v: View) {
@@ -54,6 +55,9 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
             }
             R.id.mRightTv -> {
                 startActivity<RegisterActivity>()
+            }
+            R.id.mForgetPwdTv -> {
+                startActivity<ForgetPwdActivity>()
             }
         }
     }
