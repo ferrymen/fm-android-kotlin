@@ -8,5 +8,7 @@ class BaseConstant {
 //        var SERVER_ADDRESS = "https://fm-android-kotlin-api.localmachine"
         var SERVER_ADDRESS = "https://10.0.2.2:3002"
         const val TABLE_PREFS = "shop"
+        //Token Key
+        const val KEY_SP_TOKEN = "token"
     }
 }

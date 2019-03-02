@@ -11,6 +11,7 @@ import com.ferrymen.user.injection.component.DaggerUserComponent
 import com.ferrymen.user.injection.module.UserModule
 import com.ferrymen.user.presenter.LoginPresenter
 import com.ferrymen.user.presenter.view.LoginView
+import com.ferrymen.user.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -36,8 +37,9 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
 
     override fun onLoginResult(result: UserInfo) {
         toast("登录成功")
-        startActivity<UserInfoActivity>()
-//        finish()
+        UserPrefsUtils.putUserInfo(result)
+//        startActivity<UserInfoActivity>()
+        finish()
     }
 
     private fun initView() {
