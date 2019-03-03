@@ -47,6 +47,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
     override fun onGetCategoryResult(result: MutableList<Category>?) {
         result?.let {
             if (it[0].parentId == 0) {
+                it[0].isSelected = true
                 topAdapter.setData(it)
                 mPresenter.getCategory(it[0].id)
             } else {
@@ -68,6 +69,8 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
                     category.isSelected = item.id == category.id
                 }
                 topAdapter.notifyDataSetChanged()
+
+                mPresenter.getCategory(item.id)
             }
         })
 
