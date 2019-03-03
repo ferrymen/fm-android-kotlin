@@ -2,7 +2,7 @@ package com.ferrymen.goods.data.api
 
 import com.ferrymen.core.data.protocol.BaseResp
 import com.ferrymen.goods.data.protocol.Category
-import com.ferrymen.goods.data.repository.GetCategoryReq
+import com.ferrymen.goods.data.protocol.GetCategoryReq
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable

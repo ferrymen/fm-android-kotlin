@@ -4,6 +4,7 @@ import com.ferrymen.core.data.net.RetrofitFactory
 import com.ferrymen.core.data.protocol.BaseResp
 import com.ferrymen.goods.data.api.CategoryApi
 import com.ferrymen.goods.data.protocol.Category
+import com.ferrymen.goods.data.protocol.GetCategoryReq
 import rx.Observable
 import javax.inject.Inject
 
