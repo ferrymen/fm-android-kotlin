@@ -16,6 +16,7 @@ var options = {
 server.use(jsonServer.bodyParser)
 server.use(middlewares);
 server.use(function (req, res, next) {
+    console.log(req.body)
     if (req.method !== "GET") {
         req.method = "GET"
         for (var key in req.body) {

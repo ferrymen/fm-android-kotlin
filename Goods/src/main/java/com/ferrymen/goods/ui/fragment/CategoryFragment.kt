@@ -13,11 +13,13 @@ import com.ferrymen.goods.injection.component.DaggerCategoryComponent
 import com.ferrymen.goods.injection.module.CategoryModule
 import com.ferrymen.goods.presenter.CategoryPresenter
 import com.ferrymen.goods.presenter.view.CategoryView
+import com.ferrymen.goods.ui.activity.GoodsActivity
 import com.ferrymen.goods.ui.adapter.SecondCategoryAdapter
 import com.ferrymen.goods.ui.adapter.TopCategoryAdapter
 import com.kennyc.view.MultiStateView
 import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
+import org.jetbrains.anko.support.v4.startActivity
 
 /*
     商品分类 Fragment
@@ -79,6 +81,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
         mSecondCategoryRv.adapter = secondAdapter
         secondAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Category> {
             override fun onItemClick(item: Category, position: Int) {
+                startActivity<GoodsActivity>("categoryId" to item.id)
             }
         })
     }
