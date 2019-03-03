@@ -2,5 +2,6 @@
   "/user/register": "/userRegister",
   "/user/login": "/userLogin",
   "/user/forgetPwd": "/userForgetPwd",
-  "/user/resetPwd": "/userResetPwd"
+  "/user/resetPwd": "/userResetPwd",
+  "/category/getCategory": "/categoryGetCategory"
 }

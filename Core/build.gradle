@@ -105,6 +105,9 @@ dependencies {
     api "com.github.shts:TriangleLabelView:$triangle_label_view_version"
 
     api "com.github.crosswall:Android-Coverflow:$coverflow_version"
+
+    //MulitStateView
+    api "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
 }
 repositories {
     mavenCentral()

@@ -9,13 +9,9 @@ import rx.Observable
 
 interface CategoryApi {
     /**
-     * mock db.json
-     *   "userRegister": {
-     *       "status": 0,
-     *       "message": "接口调用成功",
-     *       "data": "" // BaseResp<String>
-     *       }
+     * if no "category/getCategory" server
+     * retrofit2.adapter.rxjava.HttpException: HTTP 404 Not Found
      */
     @POST("category/getCategory")
-    fun getCategory(@Body reqGet: GetCategoryReq): Observable<BaseResp<MutableList<Category>?>>
+    fun getCategory(@Body req: GetCategoryReq): Observable<BaseResp<MutableList<Category>?>>
 }

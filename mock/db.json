@@ -18,5 +18,46 @@
     "status": 0,
     "message": "接口调用成功",
     "data": ""
+  },
+  "categoryGetCategory": {
+    "status": 0,
+    "message": "接口调用成功",
+    "data": [
+      {
+        "id": 0,
+        "categoryName": "电脑办公",
+        "categoryIcon": "",
+        "parentId": 0,
+        "isSelected": false
+      },
+      {
+        "id": 1,
+        "categoryName": "手机数码",
+        "categoryIcon": "",
+        "parentId": 0,
+        "isSelected": false
+      },
+      {
+        "id": 2,
+        "categoryName": "苹果",
+        "categoryIcon": "",
+        "parentId": 1,
+        "isSelected": false
+      },
+      {
+        "id": 3,
+        "categoryName": "三星",
+        "categoryIcon": "",
+        "parentId": 1,
+        "isSelected": false
+      },
+      {
+        "id": 4,
+        "categoryName": "华为",
+        "categoryIcon": "",
+        "parentId": 1,
+        "isSelected": false
+      }
+    ]
   }
 }

@@ -30,6 +30,7 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     api project(':Provider')
     api project(':Message')
+    api project(path: ':Goods')
     if (isUserModule.toBoolean()) {
         api project(':User')
     }
