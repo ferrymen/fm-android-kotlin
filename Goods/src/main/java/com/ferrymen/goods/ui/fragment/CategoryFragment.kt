@@ -49,7 +49,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
             if (it[0].parentId == 0) {
                 it[0].isSelected = true
                 topAdapter.setData(it)
-                mPresenter.getCategory(it[0].id)
+                loadData(it[0].id)
             } else {
                 secondAdapter.setData(it)
                 mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
@@ -70,7 +70,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
                 }
                 topAdapter.notifyDataSetChanged()
 
-                mPresenter.getCategory(item.id)
+                loadData(item.id)
             }
         })
 
@@ -83,8 +83,8 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
         })
     }
 
-    private fun loadData() {
-        mPresenter.getCategory(0)
+    private fun loadData(parentId: Int = 0) {
+        mPresenter.getCategory(parentId)
     }
 
 }
