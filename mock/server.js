@@ -20,7 +20,12 @@ server.use(function (req, res, next) {
     if (req.method !== "GET") {
         req.method = "GET"
         for (var key in req.body) {
-            req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
+            if (key === "keyword") {
+                req.query["goodsDesc_like"] = req.body[key]
+                delete req.body[key]
+            } else {
+                req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
+            }
         }
         delete req.body
     }
