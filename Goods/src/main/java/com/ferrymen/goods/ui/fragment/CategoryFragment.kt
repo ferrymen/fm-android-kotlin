@@ -51,7 +51,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
                 mPresenter.getCategory(it[0].id)
             } else {
                 secondAdapter.setData(it)
-//                mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
+                mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
             }
         }
     }

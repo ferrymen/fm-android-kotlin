@@ -1,63 +1,63 @@
 {
-  "userRegister": {
-    "status": 0,
-    "message": "接口调用成功",
-    "data": ""
-  },
-  "userLogin": {
-    "status": 0,
-    "message": "接口调用成功",
-    "data": {}
-  },
-  "userForgetPwd": {
-    "status": 0,
-    "message": "接口调用成功",
-    "data": ""
-  },
-  "userResetPwd": {
-    "status": 0,
-    "message": "接口调用成功",
-    "data": ""
-  },
-  "categoryGetCategory": {
-    "status": 0,
-    "message": "接口调用成功",
-    "data": [
-      {
-        "id": 0,
-        "categoryName": "电脑办公",
-        "categoryIcon": "",
-        "parentId": 0,
-        "isSelected": false
-      },
-      {
-        "id": 1,
-        "categoryName": "手机数码",
-        "categoryIcon": "",
-        "parentId": 0,
-        "isSelected": false
-      },
-      {
-        "id": 2,
-        "categoryName": "苹果",
-        "categoryIcon": "",
-        "parentId": 1,
-        "isSelected": false
-      },
-      {
-        "id": 3,
-        "categoryName": "三星",
-        "categoryIcon": "",
-        "parentId": 1,
-        "isSelected": false
-      },
-      {
-        "id": 4,
-        "categoryName": "华为",
-        "categoryIcon": "",
-        "parentId": 1,
-        "isSelected": false
-      }
-    ]
-  }
+  "userRegister": {},
+  "userLogin": {},
+  "userForgetPwd": {},
+  "userResetPwd": {},
+  "categoryGetCategory": [
+    {
+      "id": 1,
+      "categoryName": "电脑办公",
+      "categoryIcon": null,
+      "parentId": 0,
+      "isSelected": false
+    },
+    {
+      "id": 2,
+      "categoryName": "手机数码",
+      "categoryIcon": null,
+      "parentId": 0,
+      "isSelected": false
+    },
+    {
+      "id": 3,
+      "categoryName": "男装",
+      "categoryIcon": null,
+      "parentId": 0,
+      "isSelected": false
+    },
+    {
+      "id": 4,
+      "categoryName": "女装",
+      "categoryIcon": null,
+      "parentId": 0,
+      "isSelected": false
+    },
+    {
+      "id": 5,
+      "categoryName": "家用电器",
+      "categoryIcon": null,
+      "parentId": 0,
+      "isSelected": false
+    },
+    {"id": 14, "categoryName": "Apple", "categoryIcon": "https://img13.360buyimg.com/n7/jfs/t2590/338/4222589387/237425/25e40fb/57b12ac6N61374a75.jpg", "parentId": 1},
+    {"id": 15, "categoryName": "ThinkPad", "categoryIcon": "https://img14.360buyimg.com/n7/jfs/t3556/223/2158676156/110226/59267230/584b5678Nbc9f1e70.jpg", "parentId": 1},
+    {"id": 16, "categoryName": "惠普", "categoryIcon": "https://img10.360buyimg.com/n7/jfs/t3157/231/5756125504/98807/97ab361d/588084a1N06efb01d.jpg", "parentId": 1},
+    {"id": 17, "categoryName": "戴尔", "categoryIcon": "https://img14.360buyimg.com/n7/jfs/t5971/255/1793524379/148460/f42e1432/59362fc2Nf55191b9.jpg", "parentId": 1},
+    {"id": 18, "categoryName": "华硕", "categoryIcon": "https://img12.360buyimg.com/n7/jfs/t5878/352/2479795637/201591/d23a1872/5931182fN31cfa389.jpg", "parentId": 1},
+    {"id": 19, "categoryName": "神舟", "categoryIcon": "https://img13.360buyimg.com/n7/jfs/t3052/126/5163722736/217313/f05d9003/5864c7dfNcfbc5e94.jpg", "parentId": 1},
+    {"id": 20, "categoryName": "外星人", "categoryIcon": "https://img11.360buyimg.com/n7/jfs/t4687/130/1245474410/58260/f12a15bd/58db17dbNf5371a02.jpg", "parentId": 1},
+    {"id": 21, "categoryName": "微星", "categoryIcon": "https://img12.360buyimg.com/n7/jfs/t6709/106/1129266372/226149/ab5f4641/594b8094Nb07793ab.jpg", "parentId": 1},
+    {"id": 22, "categoryName": "宏基", "categoryIcon": "https://img11.360buyimg.com/n7/jfs/t5737/312/4822081047/162369/70bbd1b2/5954b785N1787db72.jpg", "parentId": 1},
+    {"id": 23, "categoryName": "雷神", "categoryIcon": "https://img11.360buyimg.com/n7/jfs/t5671/2/2653805329/277901/cf0384f7/5932281fNeb08da02.jpg", "parentId": 1},
+    {"id": 24, "categoryName": "Apple", "categoryIcon": "https://img14.360buyimg.com/n7/jfs/t3268/124/2646283367/114153/f5704b88/57e4a358N9ccc6645.jpg", "parentId": 2},
+    {"id": 25, "categoryName": "华为", "categoryIcon": "https://img10.360buyimg.com/n7/jfs/t5890/341/1320350439/127171/2f9c4ddd/592535e0N2e102c09.jpg", "parentId": 2},
+    {"id": 26, "categoryName": "小米", "categoryIcon": "https://img14.360buyimg.com/n7/jfs/t5215/252/15502760/100416/cb06f1da/58f709adN45511018.jpg", "parentId": 2},
+    {"id": 27, "categoryName": "魅族", "categoryIcon": "https://img10.360buyimg.com/n7/jfs/t4366/71/2045605853/291379/56c87b03/58ca4dc5N1c303706.jpg", "parentId": 2},
+    {"id": 28, "categoryName": "三星", "categoryIcon": "https://img10.360buyimg.com/n7/jfs/t5905/106/1120548052/61075/6eafa3a5/592f8f7bN763e3d30.jpg", "parentId": 2},
+    {"id": 29, "categoryName": "OPPO", "categoryIcon": "https://img10.360buyimg.com/n7/jfs/t5785/24/2243796048/134801/923e11/592ea14fNec6d33c4.jpg", "parentId": 2},
+    {"id": 30, "categoryName": "vivo", "categoryIcon": "https://img11.360buyimg.com/n7/jfs/t5998/69/1052614141/116889/2f5ba58a/592f8ed9N49d8f07b.jpg", "parentId": 2},
+    {"id": 31, "categoryName": "HTC", "categoryIcon": "https://img13.360buyimg.com/n7/jfs/t5659/277/3541677944/291221/28bb44f8/593e10c9Nc3783014.jpg", "parentId": 2},
+    {"id": 32, "categoryName": "摩托罗拉", "categoryIcon": "https://img12.360buyimg.com/n7/jfs/t3109/185/1064081632/117451/2dba5e92/57c558e2N38a9e617.jpg", "parentId": 2},
+    {"id": 33, "categoryName": "索尼", "categoryIcon": "https://img10.360buyimg.com/n7/jfs/t5191/190/2535818793/70090/78c559f5/591ba9f0Nd3a41fcb.jpg", "parentId": 2}
+  ]
 }

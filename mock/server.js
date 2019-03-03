@@ -13,11 +13,25 @@ var options = {
 };
 
 // Add this before server.use(router)
+server.use(jsonServer.bodyParser)
 server.use(middlewares);
 server.use(function (req, res, next) {
-    req.method = "GET"
+    if (req.method !== "GET") {
+        req.method = "GET"
+        for (var key in req.body) {
+            req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
+        }
+        delete req.body
+    }
     next()
 })
+router.render = (req, res) => {
+  res.jsonp({
+    status: 0,
+    message: "接口调用成功",
+    data: res.locals.data
+  })
+}
 server.use(jsonServer.rewriter(routes))
 server.use(router);
 
