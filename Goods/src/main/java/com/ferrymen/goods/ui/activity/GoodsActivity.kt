@@ -25,9 +25,9 @@ class GoodsActivity: BaseMVPActivity<GoodsListPresenter>(), GoodsListView {
     override fun onGetGoodsListResult(result: MutableList<Goods>?) {
         if (result != null && result.size > 0) {
             mGoodsAdapter.setData(result)
-            mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
+//            mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
-            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
+//            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
     }
 
@@ -46,7 +46,7 @@ class GoodsActivity: BaseMVPActivity<GoodsListPresenter>(), GoodsListView {
 
 
     private fun loadData() {
-        mMultiStateView.startLoading()
+//        mMultiStateView.startLoading()
         mPresenter.getGoodsList(intent.getIntExtra("categoryId", 1), 1)
     }
 }

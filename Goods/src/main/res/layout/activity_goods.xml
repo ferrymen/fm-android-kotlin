@@ -7,14 +7,19 @@
             style="@style/MatchWrap"
             app:titleText="商品列表"/>
 
-    <com.kennyc.view.MultiStateView
-            android:id="@+id/mMultiStateView"
-            style="@style/MultiStateStyle">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/mGoodsRv"
-            style="@style/commonRecyclerView"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-    </com.kennyc.view.MultiStateView>
+    <!--<com.kennyc.view.MultiStateView-->
+            <!--android:id="@+id/mMultiStateView"-->
+            <!--style="@style/MultiStateStyle">-->
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/mGoodsRv"-->
+            <!--style="@style/commonRecyclerView"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"/>-->
+    <!--</com.kennyc.view.MultiStateView>-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mGoodsRv"
+        style="@style/commonRecyclerView"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </LinearLayout>
