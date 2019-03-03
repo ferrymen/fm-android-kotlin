@@ -17,7 +17,7 @@ import com.ferrymen.goods.ui.activity.GoodsActivity
 import com.ferrymen.goods.ui.adapter.SecondCategoryAdapter
 import com.ferrymen.goods.ui.adapter.TopCategoryAdapter
 import com.kennyc.view.MultiStateView
-import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.ferrymen.core.ui.adapter.BaseRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_category.*
 import org.jetbrains.anko.support.v4.startActivity
 

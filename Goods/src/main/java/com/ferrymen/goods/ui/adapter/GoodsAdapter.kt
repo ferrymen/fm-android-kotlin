@@ -9,7 +9,7 @@ import com.ferrymen.core.ext.loadUrl
 import com.ferrymen.core.utils.YuanFenConverter
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.Goods
-import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.ferrymen.core.ui.adapter.BaseRecyclerViewAdapter
 import kotlinx.android.synthetic.main.layout_goods_item.view.*
 
 /*

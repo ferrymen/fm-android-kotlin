@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ferrymen.core.widgets.GlideUtils
 import com.ferrymen.fmshop.R
-import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.ferrymen.core.ui.adapter.BaseRecyclerViewAdapter
 import kotlinx.android.synthetic.main.layout_home_discount_item.view.*
 
 class HomeDiscountAdapter(context: Context): BaseRecyclerViewAdapter<String, HomeDiscountAdapter.ViewHolder>(context){

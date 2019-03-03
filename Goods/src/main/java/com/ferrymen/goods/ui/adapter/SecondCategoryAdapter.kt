@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.ferrymen.core.ext.loadUrl
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.Category
-import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.ferrymen.core.ui.adapter.BaseRecyclerViewAdapter
 import kotlinx.android.synthetic.main.layout_second_category_item.view.*
 
 /*
