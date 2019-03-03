@@ -2,8 +2,10 @@ package com.ferrymen.goods.ui.activity
 
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.widget.AdapterView
 import com.ferrymen.core.ext.startLoading
 import com.ferrymen.core.ui.activity.BaseMVPActivity
+import com.ferrymen.core.ui.adapter.BaseRecyclerViewAdapter
 import com.ferrymen.goods.R
 import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.Goods
@@ -14,6 +16,7 @@ import com.ferrymen.goods.presenter.view.GoodsListView
 import com.ferrymen.goods.ui.adapter.GoodsAdapter
 import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.activity_goods.*
+import org.jetbrains.anko.startActivity
 
 class GoodsActivity: BaseMVPActivity<GoodsListPresenter>(), GoodsListView {
     private lateinit var mGoodsAdapter: GoodsAdapter
@@ -43,6 +46,13 @@ class GoodsActivity: BaseMVPActivity<GoodsListPresenter>(), GoodsListView {
         mGoodsRv.layoutManager = GridLayoutManager(this, 2)
         mGoodsAdapter = GoodsAdapter(this)
         mGoodsRv.adapter = mGoodsAdapter
+
+        mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods> {
+            override fun onItemClick(item: Goods, position: Int) {
+                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
+            }
+
+        })
     }
 
 

@@ -14,7 +14,7 @@ class GoodsConstant {
         //按关键字搜索
         const  val SEARCH_GOODS_TYPE_KEYWORD = 1
         //商品分类ID
-        const  val KEY_CATEGORY_ID = "category_id"
+        const  val KEY_CATEGORY_ID = "categoryId"
         //商品关键字
         const val KEY_GOODS_KEYWORD = "goods_keyword"
         //商品ID
