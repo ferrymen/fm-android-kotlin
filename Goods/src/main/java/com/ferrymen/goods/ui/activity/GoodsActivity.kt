@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager
 import com.ferrymen.core.ext.startLoading
 import com.ferrymen.core.ui.activity.BaseMVPActivity
 import com.ferrymen.goods.R
+import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.Goods
 import com.ferrymen.goods.injection.component.DaggerGoodsComponent
 import com.ferrymen.goods.injection.module.GoodsModule
@@ -47,6 +48,11 @@ class GoodsActivity: BaseMVPActivity<GoodsListPresenter>(), GoodsListView {
 
     private fun loadData() {
 //        mMultiStateView.startLoading()
-        mPresenter.getGoodsList(intent.getIntExtra("categoryId", 1), 1)
+
+        if (intent.getIntExtra(GoodsConstant.KEY_SEARCH_GOODS_TYPE, 0) != 0) {
+            mPresenter.getGoodsListByKeyword(intent.getStringExtra(GoodsConstant.KEY_GOODS_KEYWORD), 1)
+        } else {
+            mPresenter.getGoodsList(intent.getIntExtra(GoodsConstant.KEY_CATEGORY_ID, 1), 1)
+        }
     }
 }

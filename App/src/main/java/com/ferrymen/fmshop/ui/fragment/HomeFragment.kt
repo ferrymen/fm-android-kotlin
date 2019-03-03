@@ -5,18 +5,21 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.fragment.BaseFragment
 import com.ferrymen.core.widgets.BannerImageLoader
 import com.ferrymen.fmshop.R
 import com.ferrymen.fmshop.common.*
 import com.ferrymen.fmshop.ui.adapter.HomeDiscountAdapter
 import com.ferrymen.fmshop.ui.adapter.TopicAdapter
+import com.ferrymen.goods.ui.activity.SearchGoodsActivity
 import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.crosswall.lib.coverflow.CoverFlow
 import org.jetbrains.anko.find
+import org.jetbrains.anko.support.v4.startActivity
 
 class HomeFragment: BaseFragment() {
 //    private lateinit var mHomeBanner: Banner
@@ -66,6 +69,10 @@ class HomeFragment: BaseFragment() {
 
     private fun initNews() {
         mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场\", \"新用户立领1000元优惠券"))
+
+        mSearchEt.onClick {
+            startActivity<SearchGoodsActivity>()
+        }
     }
 
     private fun initDiscount() {
