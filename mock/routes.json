@@ -5,5 +5,6 @@
   "/user/resetPwd": "/userResetPwd",
   "/category/getCategory": "/categoryGetCategory",
   "/goods/getGoodsList": "/goodsGetGoodsList",
-  "/goods/getGoodsListByKeyword": "/goodsGetGoodsList"
+  "/goods/getGoodsListByKeyword": "/goodsGetGoodsList",
+  "/goods/getGoodsDetail": "/goodsGetGoodsList"
 }

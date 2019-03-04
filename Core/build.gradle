@@ -109,6 +109,12 @@ dependencies {
 
     //上下拉刷新
 //    implementation "cn.bingoogolapple:bga-refreshlayout:$refreshlayout_version"
+
+    //FlowLayout
+    api 'com.zhy:flowlayout-lib:1.0.3'
+
+    //Kotlin Bus
+    api 'com.eightbitlab:rxbus:1.0.2'
 }
 repositories {
     mavenCentral()

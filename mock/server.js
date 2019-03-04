@@ -16,6 +16,7 @@ var options = {
 server.use(jsonServer.bodyParser)
 server.use(middlewares);
 server.use(function (req, res, next) {
+    console.log("body::")
     console.log(req.body)
     if (req.method !== "GET") {
         req.method = "GET"
@@ -23,19 +24,28 @@ server.use(function (req, res, next) {
             if (key === "keyword") {
                 req.query["goodsDesc_like"] = req.body[key]
                 delete req.body[key]
+            } else if (key === "goodsId") {
+                req.query["id"] = req.body[key] + ""
+                delete req.body[key]
             } else {
                 req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
             }
         }
+        console.log("query::")
+       console.log(req.query)
         delete req.body
     }
     next()
 })
 router.render = (req, res) => {
+  let { data } =  res.locals
+  if (req.originalUrl === "/goods/getGoodsDetail" && Array.isArray(data)) {
+    data = data[0]
+  }
   res.jsonp({
     status: 0,
     message: "接口调用成功",
-    data: res.locals.data
+    data: data
   })
 }
 server.use(jsonServer.rewriter(routes))

@@ -20,4 +20,11 @@ class GoodsServiceImpl @Inject constructor(): GoodsService {
         return repository.getGoodsListByKeyword(keyword, pageNo).convert()
     }
 
+    /*
+    获取商品详情
+ */
+    override fun getGoodsDetail(goodsId: Int): Observable<Goods> {
+        return repository.getGoodsDetail(goodsId).convert()
+    }
+
 }

@@ -37,4 +37,6 @@ dependencies {
     // dagger2
     api "com.google.dagger:dagger:${dagger_version}"
     kapt "com.google.dagger:dagger-compiler:${dagger_version}"
+
+    api 'ren.qinc.numberbutton:numberbutton:0.0.1'
 }
