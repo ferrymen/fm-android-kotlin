@@ -6,6 +6,12 @@ var fs = require('fs'),
   middlewares = jsonServer.defaults(),
   routes = require('./routes.json');
 
+var low = require('lowdb')
+var FileSync = require('lowdb/adapters/FileSync')
+
+var adapter = new FileSync('db.json')
+var db = low(adapter)
+
 // https://stackoverflow.com/questions/26663404/webpack-dev-server-running-on-https-web-sockets-secure
 var options = {
   key: fs.readFileSync('./ssl/localhost+1-key.pem'),
@@ -26,6 +32,7 @@ server.use(function (req, res, next) {
                 delete req.body[key]
             } else if (key === "goodsId") {
                 req.query["id"] = req.body[key] + ""
+                req.query["_embed"] = "goodsSku"
                 delete req.body[key]
             } else {
                 req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
@@ -41,6 +48,10 @@ router.render = (req, res) => {
   let { data } =  res.locals
   if (req.originalUrl === "/goods/getGoodsDetail" && Array.isArray(data)) {
     data = data[0]
+    data["goodsSku"] = db.get('goodsSku')
+      .filter({ goodsId: +req.query.id })
+      .value()
+//    data["goodsSku"] = res.locals.data["goodsSku"].find(item => item.goodsId === req.query.id)
   }
   res.jsonp({
     status: 0,

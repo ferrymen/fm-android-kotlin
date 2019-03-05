@@ -76,5 +76,31 @@
     {"id": 13, "categoryId": 15, "goodsDesc": "ThinkPad New S2（20GU0000CD）13.3英寸轻薄笔记本电脑（i5-6200U 4G 240GB SSD FHD IPS Win10 银色）", "goodsDefaultIcon": "https://img12.360buyimg.com/n1/s450x450_jfs/t3439/192/665209614/82997/ce6c3ad8/58107973Na856a8e1.jpg", "goodsDefaultPrice": "2.00", "goodsBanner": "https://img12.360buyimg.com/n1/s450x450_jfs/t3439/192/665209614/82997/ce6c3ad8/58107973Na856a8e1.jpg,https://img12.360buyimg.com/n1/s450x450_jfs/t3313/27/610873927/76897/44bc7560/58107978N6e64b6ce.jpg,https://img12.360buyimg.com/n1/s450x450_jfs/t3766/313/640498039/58537/b7e06633/5810797dN0ec052bd.jpg,https://img12.360buyimg.com/n1/s450x450_jfs/t3379/29/613387717/62645/cad23f55/58107982Neca08199.jpg", "goodsDetailOne": "https://img20.360buyimg.com/vc/jfs/t3172/316/316003976/446142/2e681194/57b168fcNfc72b6c2.jpg", "goodsDetailTwo":  "https://img20.360buyimg.com/vc/jfs/t3172/316/316003976/446142/2e681194/57b168fcNfc72b6c2.jpg", "goodsSalesCount": 53453, "goodsStockCount": 5623, "goodsCode": "10000000016", "goodsDefaultSku": "【轻薄特价】180打开i5标配,1件"},
     {"id": 14, "categoryId": 15, "goodsDesc": "联想（ThinkPad）黑侠E570 GTX（1NCD）游戏笔记本（i5-7200U 4G 500G+128G SSD GTX950M 2G独显 FHD Win10）", "goodsDefaultIcon": "https://img13.360buyimg.com/n1/s450x450_jfs/t3589/5/1216566713/222593/43da0a93/5822ed83N8f0984b9.jpg", "goodsDefaultPrice": "3.00", "goodsBanner": "https://img13.360buyimg.com/n1/s450x450_jfs/t3589/5/1216566713/222593/43da0a93/5822ed83N8f0984b9.jpg,https://img13.360buyimg.com/n1/s450x450_jfs/t3514/49/1286403745/215402/2c20d256/5822ed87N71a050ee.jpg,https://img13.360buyimg.com/n1/s450x450_jfs/t3406/2/1342234371/410922/dbedf7f8/5822ed8bN792d72cd.jpg,https://img13.360buyimg.com/n1/s450x450_jfs/t3496/362/1334197333/221885/678bc709/5822ed93Nd409d7f0.jpg", "goodsDetailOne": "https://img20.360buyimg.com/vc/jfs/t3850/230/1078650780/1998827/c8083d77/5822d122N3d828e6d.jpg", "goodsDetailTwo": "https://img20.360buyimg.com/vc/jfs/t3850/230/1078650780/1998827/c8083d77/5822d122N3d828e6d.jpg", "goodsSalesCount": 32423, "goodsStockCount": 7345, "goodsCode": "10000000017", "goodsDefaultSku": "【黑侠游戏本特价款】GTX950,1件"},
     {"id": 15, "categoryId": 15, "goodsDesc": "ThinkPad X1 Carbon 2017（20HRA007CD）14英寸轻薄笔记本电脑（i5-7200U 8G 256GSSD FHD Win10）", "goodsDefaultIcon": "https://img11.360buyimg.com/n1/s450x450_jfs/t4804/97/1759098535/205293/61ec47d0/58f428f6N5b35ea21.jpg", "goodsDefaultPrice": "3.00", "goodsBanner": "https://img11.360buyimg.com/n1/s450x450_jfs/t4804/97/1759098535/205293/61ec47d0/58f428f6N5b35ea21.jpg,https://img11.360buyimg.com/n1/s450x450_jfs/t4753/151/1078896686/306158/d1133be7/58ec5f8aN9074a72b.jpg,https://img11.360buyimg.com/n1/s450x450_jfs/t5065/111/1077695223/143927/6b0de1f/58ec5f90N0954eca1.jpg,https://img11.360buyimg.com/n1/s450x450_jfs/t4618/299/2175767160/96803/f14f7185/58ec5f94Nc2fbb336.jpg", "goodsDetailOne": "https://img20.360buyimg.com/vc/jfs/t3850/230/1078650780/1998827/c8083d77/5822d122N3d828e6d.jpg", "goodsDetailTwo": "https://img20.360buyimg.com/vc/jfs/t3850/230/1078650780/1998827/c8083d77/5822d122N3d828e6d.jpg", "goodsSalesCount": 9894, "goodsStockCount": 10000, "goodsCode": "10000000018", "goodsDefaultSku": "2017新X1 8G 256G,1件"}
+  ],
+  "goodsSku": [
+    {"id": 1, "goodsId": 1, "skuTitle": "版本", "skuContent": ["1.6GHz i5处理器","2017年i5处理器升级版","i7处理器 定制版"]},
+    {"id": 2, "goodsId": 1, "skuTitle": "配置", "skuContent": ["8GB内存/128GB SSD","8GB内存/256GB SSD"]},
+    {"id": 3, "goodsId": 2, "skuTitle": "配置", "skuContent": ["13.3英寸/双核 i5/8G/128G闪存","15.4英寸/四核 i7/16G/256G闪存","15.4英寸/四核 i7/16G/512G闪存"]},
+    {"id": 4, "goodsId": 3, "skuTitle": "颜色", "skuContent": ["银色","深空灰色"]},
+    {"id": 5, "goodsId": 3, "skuTitle": "配置", "skuContent": ["Core i5/8G内存/256G闪存","256G闪存/Multi-Touch Bar","512G闪存/Multi-Touch Bar"]},
+    {"id": 6, "goodsId": 4, "skuTitle": "颜色", "skuContent": ["MMGF2CH/A银色","2017款 MQD32CH/A","MMGG2CH/A银色","2017款 MQD42CH/A"]},
+    {"id": 7, "goodsId": 4, "skuTitle": "版本", "skuContent": ["Core i5/8G内存/128G闪存","Core i5/8G内存/256G闪存"]},
+    {"id": 8, "goodsId": 5, "skuTitle": "颜色", "skuContent": ["13英寸 Core i5 8G内存 256G闪存","MMGG2CH/A银色","13英寸Multi-Touch Bar 256G","15英寸 Multi-Touch Bar 512G"]},
+    {"id": 9, "goodsId": 5, "skuTitle": "版本", "skuContent": ["银色","深空灰色"]},
+    {"id": 10, "goodsId": 6, "skuTitle": "版本", "skuContent": ["1.6GHz i5处理器","2017年i5处理器升级版","i7处理器 定制版"]},
+    {"id": 11, "goodsId": 6, "skuTitle": "配置", "skuContent": ["8GB内存/128GB SSD","8GB内存/256GB SSD"]},
+    {"id": 12, "goodsId": 7, "skuTitle": "颜色", "skuContent": ["MMGF2CH/A银色","2017款 MQD32CH/A","MMGG2CH/A银色","2017款 MQD42CH/A"]},
+    {"id": 13, "goodsId": 7, "skuTitle": "版本", "skuContent": ["Core i5/8G内存/128G闪存","Core i5/8G内存/256G闪存"]},
+    {"id": 14, "goodsId": 8, "skuTitle": "颜色", "skuContent": ["银白色"]},
+    {"id": 15, "goodsId": 8, "skuTitle": "版本", "skuContent": ["8G","128G","16GB","256G"]},
+    {"id": 16, "goodsId": 9, "skuTitle": "颜色", "skuContent": ["金色","银色","深空灰","玫瑰金"]},
+    {"id": 17, "goodsId": 9, "skuTitle": "版本", "skuContent": ["32GB","128GB"]},
+    {"id": 18, "goodsId": 10, "skuTitle": "颜色", "skuContent": ["亮黑色","金色","银色","深空灰","玫瑰金"]},
+    {"id": 19, "goodsId": 10, "skuTitle": "版本", "skuContent": ["32GB","128GB","256GB"]},
+    {"id": 20, "goodsId": 11, "skuTitle": "颜色", "skuContent": ["灰色","金色"]},
+    {"id": 21, "goodsId": 12, "skuTitle": "颜色", "skuContent": ["【i7豪华版】8G 1T","【i7基础版】4G 500G","【i7顶配版】8G 256GSSD","【爆款】180开合i5 4G 500G","【高配款】180开合i5 8G 500G"]},
+    {"id": 22, "goodsId": 13, "skuTitle": "颜色", "skuContent": ["【轻薄特价】180打开i5标配","【180打开 触控】i5 8G 180G","【180打开背光键盘】i5 8G 256G","【碳纤维360度窄边框】180G","【黑色180开合】i7极速"]},
+    {"id": 23, "goodsId": 14, "skuTitle": "颜色", "skuContent": ["【黑侠游戏本特价款】GTX950","【黑侠游戏本高配款】GTX950","【黑侠游戏本顶配款】GTX950","【黑侠游戏i7殿堂款】GTX950"]},
+    {"id": 24, "goodsId": 15, "skuTitle": "颜色", "skuContent": ["2017新X1 8G 256G","2017新X1 i7 8G 256G","2017新X1 i7 8G 512G","经典款 8G 180G"]}
   ]
 }

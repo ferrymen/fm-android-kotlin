@@ -6,7 +6,10 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseActivity
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
@@ -16,6 +19,7 @@ import com.ferrymen.goods.R
 import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.Goods
 import com.ferrymen.goods.event.GoodsDetailImageEvent
+import com.ferrymen.goods.event.SkuChangedEvent
 import com.ferrymen.goods.injection.component.DaggerGoodsComponent
 import com.ferrymen.goods.injection.module.GoodsModule
 import com.ferrymen.goods.presenter.GoodsDetailPresenter
@@ -33,6 +37,11 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
     private lateinit var mSkuPop: GoodsSkuPopView
     private var mCurGoods:Goods? = null
 
+    //SKU弹层出场动画
+    private lateinit var mAnimationStart: Animation
+    //SKU弹层退场动画
+    private lateinit var mAnimationEnd: Animation
+
     override fun injectComponent() {
         DaggerGoodsComponent.builder().activityComponent(activityComponent).goodsModule(GoodsModule()).build().inject(this)
         mPresenter.mView = this
@@ -46,8 +55,10 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initAnim()
         initSkuPop()
         loadData()
+        initObserve()
     }
 
     private fun initView() {
@@ -59,6 +70,7 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
 
         mSkuView.onClick {
             mSkuPop.showAtLocation((activity as BaseActivity).contentView, Gravity.BOTTOM and Gravity.CENTER_HORIZONTAL,0,0)
+            (activity as BaseActivity).contentView.startAnimation(mAnimationStart)
         }
     }
 
@@ -72,6 +84,9 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
  */
     private fun initSkuPop() {
         mSkuPop = GoodsSkuPopView(activity as Activity)
+        mSkuPop.setOnDismissListener {
+            (activity as BaseActivity).contentView.startAnimation(mAnimationEnd)
+        }
     }
 
     override fun onGetGoodsDetailResult(result: Goods) {
@@ -94,6 +109,36 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
         mSkuPop.setGoodsCode(result.goodsCode)
         mSkuPop.setGoodsPrice(result.goodsDefaultPrice)
 
+        mSkuPop.setSkuData(result.goodsSku)
+
+    }
+
+    private fun initObserve () {
+        Bus.observe<SkuChangedEvent>()
+                .subscribe {
+                    mSkuSelectedTv.text = mSkuPop.getSelectSku() + GoodsConstant.SKU_SEPARATOR + mSkuPop.getSelectCount() + "件"
+                }.registerInBus(this)
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Bus.unregister(this)
+    }
+
+    /*
+  初始化缩放动画
+*/
+    private fun initAnim() {
+        mAnimationStart = ScaleAnimation(
+                1f, 0.95f, 1f, 0.95f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+        mAnimationStart.duration = 500
+        mAnimationStart.fillAfter = true
+
+        mAnimationEnd = ScaleAnimation(
+                0.95f, 1f, 0.95f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+        mAnimationEnd.duration = 500
+        mAnimationEnd.fillAfter = true
     }
 
 }

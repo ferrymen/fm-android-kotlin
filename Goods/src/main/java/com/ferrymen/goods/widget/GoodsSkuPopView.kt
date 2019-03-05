@@ -7,12 +7,16 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.*
+import com.eightbitlab.rxbus.Bus
 import com.ferrymen.core.ext.loadUrl
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.utils.YuanFenConverter
+import com.ferrymen.core.widgets.DefaultTextWatcher
 import com.ferrymen.goods.R
 import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.GoodsSku
+import com.ferrymen.goods.event.SkuChangedEvent
+import com.ferrymen.goods.ext.getEditText
 import kotlinx.android.synthetic.main.layout_sku_pop.view.*
 
 /*
@@ -65,6 +69,14 @@ class GoodsSkuPopView(context: Activity) : PopupWindow(context), View.OnClickLis
         mRootView.mAddCartBtn.onClick(this)
 
         mRootView.mSkuCountBtn.setCurrentNumber(1)
+
+        mRootView.mSkuCountBtn.getEditText().addTextChangedListener(
+                object : DefaultTextWatcher() {
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                        Bus.send(SkuChangedEvent())
+                    }
+                }
+        )
     }
 
     /*

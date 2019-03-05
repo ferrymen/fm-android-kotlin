@@ -47,6 +47,7 @@ class GoodsActivity: BaseMVPActivity<GoodsListPresenter>(), GoodsListView {
         mGoodsAdapter = GoodsAdapter(this)
         mGoodsRv.adapter = mGoodsAdapter
 
+        // 只有在调试模式下，在此处打断点才有可能触发click事件
         mGoodsAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods> {
             override fun onItemClick(item: Goods, position: Int) {
                 startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
