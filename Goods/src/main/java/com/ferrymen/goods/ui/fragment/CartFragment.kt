@@ -9,9 +9,11 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
+import com.ferrymen.core.utils.YuanFenConverter
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.CartGoods
 import com.ferrymen.goods.event.CartAllCheckedEvent
+import com.ferrymen.goods.event.UpdateTotalPriceEvent
 import com.ferrymen.goods.injection.component.DaggerCartComponent
 import com.ferrymen.goods.injection.component.DaggerCategoryComponent
 import com.ferrymen.goods.injection.module.CartModule
@@ -28,6 +30,7 @@ import kotlinx.android.synthetic.main.fragment_cart.*
 class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
 
     private lateinit var mAdapter: CartGoodsAdapter
+    private var mTotalPrice: Long = 0
 
     override fun injectComponent() {
         DaggerCartComponent.builder().activityComponent(activityComponent).cartModule(CartModule()).build().inject(this)
@@ -56,6 +59,7 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
                 item.isSelected = mAllCheckedCb.isSelected
             }
             mAdapter.notifyDataSetChanged()
+            updateTotalPrice()
         }
     }
 
@@ -79,8 +83,24 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
 //                    mAllCheckedCb.isSelected = t.isAllChecked
 //                }
                     mAllCheckedCb.isSelected = it.isAllChecked
+                    updateTotalPrice()
                 }
                 .registerInBus(this)
+
+        Bus.observe<UpdateTotalPriceEvent>()
+                .subscribe {
+                    updateTotalPrice()
+                }
+                .registerInBus(this)
+    }
+
+    private fun updateTotalPrice() {
+        mTotalPrice = mAdapter.dataList
+                .filter { it.isSelected }
+                .map { it.goodsCount * it.goodsPrice }
+                .sum()
+
+        mTotalPriceTv.text = "合计：${YuanFenConverter.changeF2YWithUnit(mTotalPrice)}"
     }
 
     override fun onDestroy() {

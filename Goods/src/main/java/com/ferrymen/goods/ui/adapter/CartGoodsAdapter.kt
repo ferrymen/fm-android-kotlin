@@ -14,6 +14,7 @@ import com.ferrymen.core.widgets.DefaultTextWatcher
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.CartGoods
 import com.ferrymen.goods.event.CartAllCheckedEvent
+import com.ferrymen.goods.event.UpdateTotalPriceEvent
 import com.ferrymen.goods.ext.getEditText
 import kotlinx.android.synthetic.main.layout_cart_goods_item.view.*
 
@@ -58,7 +59,7 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
         holder.itemView.mGoodsCountBtn.getEditText().addTextChangedListener(object: DefaultTextWatcher(){
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 model.goodsCount = s.toString().toInt()
-//                Bus.send(UpdateTotalPriceEvent())
+                Bus.send(UpdateTotalPriceEvent())
             }
         })
 
