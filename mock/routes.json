@@ -7,5 +7,6 @@
   "/goods/getGoodsList": "/goodsGetGoodsList",
   "/goods/getGoodsListByKeyword": "/goodsGetGoodsList",
   "/goods/getGoodsDetail": "/goodsGetGoodsList",
-  "/cart/add": "/cartAdd"
+  "/cart/add": "/cartAdd",
+  "/cart/getList": "/cartList"
 }

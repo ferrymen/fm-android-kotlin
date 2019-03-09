@@ -24,20 +24,37 @@ server.use(middlewares);
 server.use(function (req, res, next) {
     console.log("body::")
     console.log(req.body)
+    console.log(req.path)
     if (req.method !== "GET") {
         req.method = "GET"
-        for (var key in req.body) {
-            if (key === "keyword") {
-                req.query["goodsDesc_like"] = req.body[key]
-                delete req.body[key]
-            } else if (key === "goodsId") {
-                req.query["id"] = req.body[key] + ""
-                req.query["_embed"] = "goodsSku"
-                delete req.body[key]
+        if (req.path === "/cart/add") {
+            db.get('cartList')
+              .push(req.body)
+              .write()
+
+            db.get('cartAdd')
+              .update('count', function () {
+                  return db
+                    .get('cartList')
+                    .size()
+                    .value()
+                  })
+              .write()
             } else {
-                req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
+            for (var key in req.body) {
+                if (key === "keyword") {
+                    req.query["goodsDesc_like"] = req.body[key]
+                    delete req.body[key]
+                } else if (key === "goodsId") {
+                    req.query["id"] = req.body[key] + ""
+                    req.query["_embed"] = "goodsSku"
+                    delete req.body[key]
+                } else {
+                    req.query[key] = typeof req.body[key] === "number" ? req.body[key] + "" : req.body[key]
+                }
             }
-        }
+         }
+
         console.log("query::")
        console.log(req.query)
         delete req.body
