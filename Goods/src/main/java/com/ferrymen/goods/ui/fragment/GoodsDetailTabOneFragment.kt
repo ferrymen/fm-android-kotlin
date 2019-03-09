@@ -21,6 +21,7 @@ import com.ferrymen.goods.data.protocol.Goods
 import com.ferrymen.goods.event.AddCartEvent
 import com.ferrymen.goods.event.GoodsDetailImageEvent
 import com.ferrymen.goods.event.SkuChangedEvent
+import com.ferrymen.goods.event.UpdateCartSizeEvent
 import com.ferrymen.goods.injection.component.DaggerGoodsComponent
 import com.ferrymen.goods.injection.module.GoodsModule
 import com.ferrymen.goods.presenter.GoodsDetailPresenter
@@ -165,7 +166,7 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
     }
 
     override fun onAddCartResult(result: Int) {
-        toast("Cart---$result")
+        Bus.send(UpdateCartSizeEvent())
     }
 
 }

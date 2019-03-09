@@ -4,9 +4,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
+import com.ferrymen.core.widgets.AppPrefsUtils
 import com.ferrymen.fmshop.R
 import com.ferrymen.fmshop.ui.fragment.HomeFragment
 import com.ferrymen.fmshop.ui.fragment.MeFragment
+import com.ferrymen.goods.common.GoodsConstant
+import com.ferrymen.goods.event.UpdateCartSizeEvent
 import com.ferrymen.goods.ui.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import rx.Observable
@@ -27,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mBottomNavBar.checkMsgBadge(false)
-        mBottomNavBar.checkCartBadge(20)
+//        mBottomNavBar.checkMsgBadge(false)
+//        mBottomNavBar.checkCartBadge(20)
 //        Observable.timer(2, TimeUnit.SECONDS)
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe({mBottomNavBar.checkMsgBadge(true)})
@@ -40,13 +45,15 @@ class MainActivity : AppCompatActivity() {
         initFragment()
         initBottomNav()
         changeFragment(0)
+        initObserve()
+        loadCartSize()
     }
 
-    private fun initView() {
-        var manager = supportFragmentManager.beginTransaction()
-        manager.replace(R.id.mContainer, HomeFragment())
-        manager.commit()
-    }
+//    private fun initView() {
+//        var manager = supportFragmentManager.beginTransaction()
+//        manager.replace(R.id.mContainer, HomeFragment())
+//        manager.commit()
+//    }
 
     private fun initFragment() {
         val manager = supportFragmentManager.beginTransaction()
@@ -87,4 +94,21 @@ class MainActivity : AppCompatActivity() {
         manager.show(mStack[position])
         manager.commit()
     }
+
+    private fun  initObserve() {
+        Bus.observe<UpdateCartSizeEvent>()
+                .subscribe {
+                    loadCartSize()
+                }.registerInBus(this)
+    }
+
+    private fun loadCartSize() {
+        mBottomNavBar.checkCartBadge(AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Bus.unregister(this)
+    }
+
 }
