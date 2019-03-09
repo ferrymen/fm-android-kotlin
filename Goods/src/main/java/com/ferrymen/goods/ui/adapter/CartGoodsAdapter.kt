@@ -13,6 +13,7 @@ import com.ferrymen.core.utils.YuanFenConverter
 import com.ferrymen.core.widgets.DefaultTextWatcher
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.CartGoods
+import com.ferrymen.goods.event.CartAllCheckedEvent
 import com.ferrymen.goods.ext.getEditText
 import kotlinx.android.synthetic.main.layout_cart_goods_item.view.*
 
@@ -49,7 +50,7 @@ class CartGoodsAdapter(context: Context) : BaseRecyclerViewAdapter<CartGoods, Ca
         holder.itemView.mCheckedCb.onClick {
             model.isSelected = holder.itemView.mCheckedCb.isChecked
             val isAllChecked = dataList.all {it.isSelected }
-//            Bus.send(CartAllCheckedEvent(isAllChecked))
+            Bus.send(CartAllCheckedEvent(isAllChecked))
             notifyDataSetChanged()
         }
 

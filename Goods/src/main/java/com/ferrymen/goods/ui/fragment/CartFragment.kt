@@ -5,9 +5,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
+import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.CartGoods
+import com.ferrymen.goods.event.CartAllCheckedEvent
 import com.ferrymen.goods.injection.component.DaggerCartComponent
 import com.ferrymen.goods.injection.component.DaggerCategoryComponent
 import com.ferrymen.goods.injection.module.CartModule
@@ -39,6 +43,7 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
         super.onViewCreated(view, savedInstanceState)
         initView()
         loadData()
+        initObserve()
     }
 
     private fun initView() {
@@ -46,6 +51,12 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
         mAdapter = CartGoodsAdapter(context!!)
         mCartGoodsRv.adapter = mAdapter
 
+        mAllCheckedCb.onClick {
+            for (item in mAdapter.dataList) {
+                item.isSelected = mAllCheckedCb.isSelected
+            }
+            mAdapter.notifyDataSetChanged()
+        }
     }
 
     private fun loadData() {
@@ -59,6 +70,22 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
         } else {
 //            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
+    }
+
+    private fun initObserve() {
+        Bus.observe<CartAllCheckedEvent>()
+                .subscribe {
+//                    t: CartAllCheckedEvent -> run {
+//                    mAllCheckedCb.isSelected = t.isAllChecked
+//                }
+                    mAllCheckedCb.isSelected = it.isAllChecked
+                }
+                .registerInBus(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Bus.unregister(this)
     }
 
 }
