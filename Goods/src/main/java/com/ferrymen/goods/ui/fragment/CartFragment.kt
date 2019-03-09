@@ -86,6 +86,19 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
                 mPresenter.deleteCartList(cartIdList)
             }
         }
+
+        mSettleAccountsBtn.onClick {
+            var cartGoodsList: MutableList<CartGoods> = arrayListOf()
+
+            mAdapter.dataList.filter { it.isSelected }
+                    .mapTo(cartGoodsList){it}
+
+            if (cartGoodsList.size == 0) {
+                toast("请选择要提交的数据")
+            } else {
+                mPresenter.submitCart(cartGoodsList, mTotalPrice)
+            }
+        }
     }
 
     private fun loadData() {
@@ -96,8 +109,10 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
         if (result != null && result.size > 0) {
             mAdapter.setData(result)
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
+            mHeaderBar.getRightView().setVisible(true)
         } else {
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
+            mHeaderBar.getRightView().setVisible(false)
         }
 
         AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, result!!.size)
@@ -146,6 +161,11 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
     override fun onDeleteCartResult(result: Boolean) {
         toast("删除成功")
         loadData()
+        refreshEditStatus()
+    }
+
+    override fun onSubmitCartResult(result: Int) {
+        toast("$result")
     }
 
     override fun onDestroy() {

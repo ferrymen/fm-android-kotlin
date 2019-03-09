@@ -9,5 +9,6 @@
   "/goods/getGoodsDetail": "/goodsGetGoodsList",
   "/cart/add": "/cartAdd",
   "/cart/getList": "/cartList",
-  "/cart/delete": "/cartDelete"
+  "/cart/delete": "/cartDelete",
+  "/cart/submit": "/cartSubmit"
 }

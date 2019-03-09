@@ -32,5 +32,5 @@ interface CartApi {
         提交购物车商品
      */
     @POST("cart/submit")
-    fun submitCart(@Body req: SubmitCartReq): Observable<BaseResp<Int>>
+    fun submitCart(@Body req: SubmitCartReq): Observable<BaseResp<SubmitCartRes>>
 }

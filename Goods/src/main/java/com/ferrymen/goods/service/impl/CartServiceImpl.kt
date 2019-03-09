@@ -5,6 +5,7 @@ import com.ferrymen.core.ext.convertBoolean
 import com.ferrymen.goods.data.protocol.AddCartRes
 import com.ferrymen.goods.data.protocol.BaseRes
 import com.ferrymen.goods.data.protocol.CartGoods
+import com.ferrymen.goods.data.protocol.SubmitCartRes
 import com.ferrymen.goods.data.repository.CartRepository
 import com.ferrymen.goods.service.CartService
 import rx.Observable
@@ -28,5 +29,8 @@ class CartServiceImpl @Inject constructor(): CartService {
         return repository.deleteCartList(list).convert()
     }
 
+    override fun submitCart(list: MutableList<CartGoods>, totalPrice: Long): Observable<SubmitCartRes> {
+        return repository.submitCart(list, totalPrice).convert()
+    }
 
 }

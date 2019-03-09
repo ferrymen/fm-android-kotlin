@@ -6,6 +6,7 @@ import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.goods.data.protocol.BaseRes
 import com.ferrymen.goods.data.protocol.CartGoods
 import com.ferrymen.goods.data.protocol.Category
+import com.ferrymen.goods.data.protocol.SubmitCartRes
 import com.ferrymen.goods.presenter.view.CartListView
 import com.ferrymen.goods.service.CartService
 import rx.Observable
@@ -47,6 +48,24 @@ class CartListPresenter @Inject constructor(): BasePresenter<CartListView>() {
                     override fun onNext(t: BaseRes) {
                         super.onNext(t)
                         mView.onDeleteCartResult(t.isSuccessed)
+                    }
+                }, lifecycleProvider)
+    }
+
+    fun submitCart(list: MutableList<CartGoods>, totalPrice: Long) {
+
+        if (!checkNetWork()) {
+//            println("网络不可用")
+            return
+        }
+
+        mView.showLoading()
+        cartService
+                .submitCart(list, totalPrice)
+                .execute(object : BaseSubscriber<SubmitCartRes>(mView) {
+                    override fun onNext(t: SubmitCartRes) {
+                        super.onNext(t)
+                        mView.onSubmitCartResult(t.order)
                     }
                 }, lifecycleProvider)
     }

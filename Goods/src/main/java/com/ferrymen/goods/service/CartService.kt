@@ -1,9 +1,6 @@
 package com.ferrymen.goods.service
 import com.ferrymen.core.data.protocol.BaseResp
-import com.ferrymen.goods.data.protocol.AddCartRes
-import com.ferrymen.goods.data.protocol.BaseRes
-import com.ferrymen.goods.data.protocol.CartGoods
-import com.ferrymen.goods.data.protocol.DeleteCartReq
+import com.ferrymen.goods.data.protocol.*
 import retrofit2.http.Body
 import rx.Observable
 
@@ -17,4 +14,9 @@ interface CartService {
     fun getCartList(): Observable<MutableList<CartGoods>?>
 
     fun deleteCartList(list: List<Int>): Observable<BaseRes>
+
+    /*
+        购物车结算
+     */
+    fun submitCart(list: MutableList<CartGoods>, totalPrice: Long): Observable<SubmitCartRes>
 }

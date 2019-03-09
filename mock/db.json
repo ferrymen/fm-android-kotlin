@@ -641,5 +641,8 @@
   },
   "cartDelete": {
     "isSuccessed": true
+  },
+  "cartSubmit": {
+    "order": 15
   }
 }
