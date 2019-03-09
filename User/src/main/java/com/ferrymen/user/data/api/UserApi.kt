@@ -30,10 +30,10 @@ interface UserApi {
     fun login(@Body req: LoginReq): Observable<BaseResp<UserInfo>>
 
     @POST("user/forgetPwd")
-    fun forgetPwd(@Body req: ForgetPwdReq): Observable<BaseResp<String>>
+    fun forgetPwd(@Body req: ForgetPwdReq): Observable<BaseResp<BaseRes>>
 
     @POST("user/resetPwd")
-    fun resetPwd(@Body req: ResetPwdReq): Observable<BaseResp<String>>
+    fun resetPwd(@Body req: ResetPwdReq): Observable<BaseResp<BaseRes>>
 
     @POST("user/editUser")
     fun editUser(@Body req: EditUserReq): Observable<BaseResp<UserInfo>>

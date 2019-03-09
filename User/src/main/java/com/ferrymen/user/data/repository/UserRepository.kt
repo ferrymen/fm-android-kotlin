@@ -20,13 +20,13 @@ class UserRepository @Inject  constructor() {
                 .login(LoginReq(mobile, pwd, pushId))
     }
 
-    fun forgetPwd(mobile: String, verifyCode: String): Observable<BaseResp<String>> {
+    fun forgetPwd(mobile: String, verifyCode: String): Observable<BaseResp<BaseRes>> {
         return RetrofitFactory.instance
                 .create(UserApi::class.java)
                 .forgetPwd(ForgetPwdReq(mobile, verifyCode))
     }
 
-    fun resetPwd(mobile: String, pwd: String): Observable<BaseResp<String>> {
+    fun resetPwd(mobile: String, pwd: String): Observable<BaseResp<BaseRes>> {
         return RetrofitFactory.instance
                 .create(UserApi::class.java)
                 .resetPwd(ResetPwdReq(mobile, pwd))

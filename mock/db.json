@@ -6,8 +6,17 @@
       "userIcon": "https://img5.duitang.com/uploads/item/201410/02/20141002212239_zWR55.jpeg",
       "userMobile": "111222",
       "userSign": "32312321",
-      "userPwd": "111222",
+      "userPwd": "222111",
       "userName": "fdfsdfsd"
+    },
+    {
+      "id": 1,
+      "userGender": "1",
+      "userIcon": "https://img5.duitang.com/uploads/item/201410/02/20141002212239_zWR55.jpeg",
+      "userMobile": "111333",
+      "userName": "111333",
+      "userSign": "",
+      "userPwd": "111333"
     }
   ],
   "userRegister": {
@@ -17,8 +26,12 @@
     "isSuccessed": true
   },
   "editUser": {},
-  "userForgetPwd": {},
-  "userResetPwd": {},
+  "userForgetPwd": {
+    "isSuccessed": true
+  },
+  "userResetPwd": {
+    "isSuccessed": true
+  },
   "categoryGetCategory": [
     {
       "id": 1,

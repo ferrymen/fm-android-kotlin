@@ -49,6 +49,11 @@ server.use(function (req, res, next) {
                         "userSign": req.body.sign
                       })
               .write()
+        } else if (req.path === "/user/resetPwd") {
+            db.get('user')
+                .find({userMobile: req.body.mobile})
+                .assign({userPwd: req.body.pwd})
+                .write()
         } else if (req.path === "/cart/add") {
             var cartListSize = db.get('cartList').size().value()
             db.get('cartList')
@@ -106,7 +111,12 @@ router.render = (req, res) => {
   if (req.originalUrl === "/user/login") {
     const user = db.get('user').find({userMobile: req.query.mobile}).value()
     if (user) {
-        data = user
+        if (user.userPwd != req.query.pwd) {
+            status = -1
+            message = "密码错误"
+        } else {
+            data = user
+        }
     } else {
         status = -1
         message = "用户不存在"
@@ -114,7 +124,13 @@ router.render = (req, res) => {
   } else if (req.originalUrl === "/user/editUser") {
     const user = db.get('user').find({id: +req.get("token")}).value()
     data = user
-  } else if (req.originalUrl === "/goods/getGoodsDetail" && Array.isArray(data)) {
+  } else if (req.originalUrl === "/user/forgetPwd") {
+   const user = db.get('user').find({userMobile: req.query.mobile}).value()
+   if (!user) {
+       status = -1
+       message = "用户不存在，请先注册"
+   }
+} else if (req.originalUrl === "/goods/getGoodsDetail" && Array.isArray(data)) {
     data = data[0]
     data["goodsSku"] = db.get('goodsSku')
       .filter({ goodsId: +req.query.id })
