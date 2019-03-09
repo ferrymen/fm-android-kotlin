@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.ferrymen.core.ext.onClick
+import com.ferrymen.core.ext.setVisible
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
 import com.ferrymen.core.utils.YuanFenConverter
 import com.ferrymen.goods.R
@@ -53,6 +54,10 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
         mCartGoodsRv.layoutManager = LinearLayoutManager(context)
         mAdapter = CartGoodsAdapter(context!!)
         mCartGoodsRv.adapter = mAdapter
+
+        mHeaderBar.getRightView().onClick {
+            refreshEditStatus()
+        }
 
         mAllCheckedCb.onClick {
             for (item in mAdapter.dataList) {
@@ -101,6 +106,16 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
                 .sum()
 
         mTotalPriceTv.text = "合计：${YuanFenConverter.changeF2YWithUnit(mTotalPrice)}"
+    }
+
+
+    private fun refreshEditStatus() {
+        var isEditStatus = getString(R.string.common_edit) == mHeaderBar.getRightText()
+        mTotalPriceTv.setVisible(isEditStatus.not())
+        mSettleAccountsBtn.setVisible(isEditStatus.not())
+        mDeleteBtn.setVisible(isEditStatus)
+
+        mHeaderBar.getRightView().text = if (isEditStatus) getString(R.string.common_complete) else getString(R.string.common_edit)
     }
 
     override fun onDestroy() {
