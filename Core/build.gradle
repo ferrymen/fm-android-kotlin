@@ -118,6 +118,9 @@ dependencies {
 
     // BadgeView
     api 'q.rorbin:badgeview:1.1.2'
+
+    //ARouter
+    api "com.alibaba:arouter-api:$arouter_api_version"
 }
 repositories {
     mavenCentral()

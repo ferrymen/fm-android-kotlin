@@ -663,10 +663,82 @@
       "goodsPrice": 1,
       "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
       "id": 1
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 2
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 3
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 4
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 5
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 6
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 7
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 8
+    },
+    {
+      "goodsCount": 1,
+      "goodsDesc": "Apple MacBook Air 13.3英寸笔记本电脑 银色(Core i5 处理器/8GB内存/128GB SSD闪存 MMGF2CH/A}",
+      "goodsIcon": "https://img11.360buyimg.com/n7/jfs/t2968/143/2485546147/238650/70df281e/57b12a31N8f4f75a3.jpg",
+      "goodsId": 1,
+      "goodsPrice": 1,
+      "goodsSku": "1.6GHz i5处理器,8GB内存/128GB SSD",
+      "id": 9
     }
   ],
   "cartAdd": {
-    "count": 2
+    "count": 10
   },
   "cartDelete": {
     "isSuccessed": true

@@ -2,9 +2,11 @@ package com.ferrymen.user.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ferrymen.core.ext.enable
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseMVPActivity
+import com.ferrymen.provider.router.RouterPath
 import com.ferrymen.user.R
 import com.ferrymen.user.data.protocol.UserInfo
 import com.ferrymen.user.injection.component.DaggerUserComponent
@@ -16,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
+@Route(path = RouterPath.User.PATH_LOGIN)
 class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClickListener {
     private var pressTime: Long = 0
     override fun injectComponent() {
