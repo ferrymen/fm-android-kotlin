@@ -9,12 +9,17 @@ import com.bigkoo.alertview.AlertView
 import com.bigkoo.alertview.OnItemClickListener
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ui.activity.BaseMVPActivity
+import com.ferrymen.core.widgets.AppPrefsUtils
 import com.ferrymen.core.widgets.DateUtils
+import com.ferrymen.core.widgets.GlideUtils
+import com.ferrymen.provider.common.ProviderConstant
 import com.ferrymen.user.R
+import com.ferrymen.user.data.protocol.UserInfo
 import com.ferrymen.user.injection.component.DaggerUserComponent
 import com.ferrymen.user.injection.module.UserModule
 import com.ferrymen.user.presenter.UserInfoPresenter
 import com.ferrymen.user.presenter.view.UserInfoView
+import com.ferrymen.user.utils.UserPrefsUtils
 import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.app.TakePhotoImpl
 import com.jph.takephoto.compress.CompressConfig
@@ -27,6 +32,13 @@ class UserInfoActivity : BaseMVPActivity<UserInfoPresenter>(), UserInfoView, Tak
 
     private lateinit var mTakePhoto: TakePhoto
     private lateinit var mTempFile: File
+
+    private var mUserIcon: String? = null
+    private var mUserName: String? = null
+    private var mUserMobile: String? = null
+    private var mUserGender: String? = null
+    private var mUserSign: String? = null
+
     override fun injectComponent() {
         // inject done
         DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
@@ -41,7 +53,9 @@ class UserInfoActivity : BaseMVPActivity<UserInfoPresenter>(), UserInfoView, Tak
         mTakePhoto.onCreate(savedInstanceState)
 
         initView()
+        initData()
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -52,6 +66,30 @@ class UserInfoActivity : BaseMVPActivity<UserInfoPresenter>(), UserInfoView, Tak
         mUserIconView.onClick {
             showAlertView()
         }
+
+        mHeaderBar.getRightView().onClick {
+            mPresenter.editUser("https://img5.duitang.com/uploads/item/201410/02/20141002212239_zWR55.jpeg", mUserNameEt?.text.toString(), if(mGenderMaleRb.isChecked) "0" else "1", mUserSignEt?.text.toString())
+        }
+    }
+
+    private fun initData() {
+        mUserIcon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
+        mUserName = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
+        mUserMobile = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_MOBILE)
+        mUserGender = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_GENDER)
+        mUserSign = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_SIGN)
+
+        if (mUserIcon != "") {
+            GlideUtils.loadUrlImage(this, mUserIcon!!, mUserIconIv)
+        }
+        mUserNameEt.setText(mUserName)
+        mUserMobileTv.text = mUserMobile
+        if (mUserGender == "0")  {
+            mGenderMaleRb.isChecked = true
+        } else {
+            mGenderFemaleRb.isChecked = true
+        }
+        mUserSignEt.setText(mUserSign)
     }
 
     private fun showAlertView() {
@@ -91,5 +129,12 @@ class UserInfoActivity : BaseMVPActivity<UserInfoPresenter>(), UserInfoView, Tak
         }
         this.mTempFile = File(filesDir, tempFileName)
     }
+
+    override fun onEditUserResult(result: UserInfo) {
+        toast("修改成功")
+        UserPrefsUtils.putUserInfo(result)
+        finish()
+    }
+
 }
 

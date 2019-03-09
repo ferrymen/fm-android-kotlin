@@ -13,6 +13,7 @@ import rx.functions.Func1
 import javax.inject.Inject
 
 class UserServiceImpl @Inject constructor(): UserService {
+
     @Inject
     lateinit var repository: UserRepository
 
@@ -40,6 +41,12 @@ class UserServiceImpl @Inject constructor(): UserService {
         return repository
                 .resetPwd(mobile, pwd)
                 .convertBoolean()
+    }
+
+    override fun editUser(userIcon: String?, userName: String, userGender: String, userSign: String): Observable<UserInfo> {
+        return repository
+                .editUser(userIcon, userName, userGender, userSign)
+                .convert()
     }
 
 }

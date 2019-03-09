@@ -1,6 +1,22 @@
 {
-  "userRegister": {},
-  "userLogin": {},
+  "user": [
+    {
+      "id": 0,
+      "userGender": "0",
+      "userIcon": "https://img5.duitang.com/uploads/item/201410/02/20141002212239_zWR55.jpeg",
+      "userMobile": "111222",
+      "userSign": "32312321",
+      "userPwd": "111222",
+      "userName": "fdfsdfsd"
+    }
+  ],
+  "userRegister": {
+    "isSuccessed": true
+  },
+  "userLogin": {
+    "isSuccessed": true
+  },
+  "editUser": {},
   "userForgetPwd": {},
   "userResetPwd": {},
   "categoryGetCategory": [

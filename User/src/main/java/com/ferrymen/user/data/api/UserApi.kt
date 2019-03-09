@@ -16,7 +16,7 @@ interface UserApi {
      *       }
      */
     @POST("user/register")
-    fun register(@Body req: RegisterReq): Observable<BaseResp<String>>
+    fun register(@Body req: RegisterReq): Observable<BaseResp<BaseRes>>
 
     /**
      * mock db.json
@@ -34,4 +34,7 @@ interface UserApi {
 
     @POST("user/resetPwd")
     fun resetPwd(@Body req: ResetPwdReq): Observable<BaseResp<String>>
+
+    @POST("user/editUser")
+    fun editUser(@Body req: EditUserReq): Observable<BaseResp<UserInfo>>
 }
