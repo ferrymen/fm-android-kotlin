@@ -18,6 +18,7 @@ import com.ferrymen.core.widgets.BannerImageLoader
 import com.ferrymen.goods.R
 import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.Goods
+import com.ferrymen.goods.event.AddCartEvent
 import com.ferrymen.goods.event.GoodsDetailImageEvent
 import com.ferrymen.goods.event.SkuChangedEvent
 import com.ferrymen.goods.injection.component.DaggerGoodsComponent
@@ -28,6 +29,7 @@ import com.ferrymen.goods.widget.GoodsSkuPopView
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_goods_detail_tab_one.*
+import org.jetbrains.anko.support.v4.toast
 
 /*
     商品分类 Fragment
@@ -118,6 +120,11 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
                 .subscribe {
                     mSkuSelectedTv.text = mSkuPop.getSelectSku() + GoodsConstant.SKU_SEPARATOR + mSkuPop.getSelectCount() + "件"
                 }.registerInBus(this)
+
+        Bus.observe<AddCartEvent>()
+                .subscribe {
+                    addCart()
+                }.registerInBus(this)
     }
 
 
@@ -139,6 +146,26 @@ class GoodsDetailTabOneFragment : BaseMVPFragment<GoodsDetailPresenter>(), Goods
                 0.95f, 1f, 0.95f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
         mAnimationEnd.duration = 500
         mAnimationEnd.fillAfter = true
+    }
+
+    /*
+    加入购物车
+ */
+    private fun addCart(){
+        mCurGoods?.let {
+            mPresenter.addCart(it.id,
+                    it.goodsDesc,
+                    it.goodsDefaultIcon,
+                    it.goodsDefaultPrice,
+                    mSkuPop.getSelectCount(),
+                    mSkuPop.getSelectSku()
+            )
+        }
+
+    }
+
+    override fun onAddCartResult(result: Int) {
+        toast("Cart---$result")
     }
 
 }

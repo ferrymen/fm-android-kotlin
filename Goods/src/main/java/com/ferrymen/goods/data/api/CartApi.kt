@@ -1,10 +1,7 @@
 package com.ferrymen.goods.data.api
 
 import com.ferrymen.core.data.protocol.BaseResp
-import com.ferrymen.goods.data.protocol.AddCartReq
-import com.ferrymen.goods.data.protocol.CartGoods
-import com.ferrymen.goods.data.protocol.DeleteCartReq
-import com.ferrymen.goods.data.protocol.SubmitCartReq
+import com.ferrymen.goods.data.protocol.*
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable
@@ -23,7 +20,7 @@ interface CartApi {
         添加商品到购物车
      */
     @POST("cart/add")
-    fun addCart(@Body req: AddCartReq): Observable<BaseResp<Int>>
+    fun addCart(@Body req: AddCartReq): Observable<BaseResp<AddCartRes>>
 
     /*
         删除购物车商品

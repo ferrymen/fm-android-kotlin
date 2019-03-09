@@ -4,10 +4,7 @@ package com.ferrymen.goods.data.repository
 import com.ferrymen.core.data.net.RetrofitFactory
 import com.ferrymen.core.data.protocol.BaseResp
 import com.ferrymen.goods.data.api.CartApi
-import com.ferrymen.goods.data.protocol.AddCartReq
-import com.ferrymen.goods.data.protocol.CartGoods
-import com.ferrymen.goods.data.protocol.DeleteCartReq
-import com.ferrymen.goods.data.protocol.SubmitCartReq
+import com.ferrymen.goods.data.protocol.*
 import javax.inject.Inject
 
 import rx.Observable
@@ -28,7 +25,7 @@ class CartRepository @Inject constructor() {
         添加商品到购物车
      */
     fun addCart(goodsId: Int, goodsDesc: String, goodsIcon: String, goodsPrice: Long,
-                goodsCount: Int, goodsSku: String): Observable<BaseResp<Int>> {
+                goodsCount: Int, goodsSku: String): Observable<BaseResp<AddCartRes>> {
         return RetrofitFactory.instance.create(CartApi::class.java)
                 .addCart(AddCartReq(goodsId, goodsDesc, goodsIcon, goodsPrice, goodsCount, goodsSku))
     }

@@ -5,6 +5,7 @@ import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.rx.BaseSubscriber
 import com.ferrymen.core.widgets.AppPrefsUtils
 import com.ferrymen.goods.common.GoodsConstant
+import com.ferrymen.goods.data.protocol.AddCartRes
 import com.ferrymen.goods.data.protocol.Goods
 import com.ferrymen.goods.presenter.view.GoodsDetailView
 import com.ferrymen.goods.service.CartService
@@ -51,10 +52,10 @@ class GoodsDetailPresenter @Inject constructor() : BasePresenter<GoodsDetailView
         }
         mView.showLoading()
         cartService.addCart(goodsId,goodsDesc,goodsIcon,goodsPrice,
-                goodsCount,goodsSku).execute(object : BaseSubscriber<Int>(mView) {
-            override fun onNext(t: Int) {
-                AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE,t)
-                mView.onAddCartResult(t)
+                goodsCount,goodsSku).execute(object : BaseSubscriber<AddCartRes>(mView) {
+            override fun onNext(t: AddCartRes) {
+                AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, t.count)
+                mView.onAddCartResult(t.count)
             }
         }, lifecycleProvider)
 

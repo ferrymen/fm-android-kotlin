@@ -15,6 +15,7 @@ import com.ferrymen.core.widgets.DefaultTextWatcher
 import com.ferrymen.goods.R
 import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.GoodsSku
+import com.ferrymen.goods.event.AddCartEvent
 import com.ferrymen.goods.event.SkuChangedEvent
 import com.ferrymen.goods.ext.getEditText
 import kotlinx.android.synthetic.main.layout_sku_pop.view.*
@@ -77,6 +78,11 @@ class GoodsSkuPopView(context: Activity) : PopupWindow(context), View.OnClickLis
                     }
                 }
         )
+
+        mRootView.mAddCartBtn.onClick {
+            Bus.send(AddCartEvent())
+            dismiss()
+        }
     }
 
     /*

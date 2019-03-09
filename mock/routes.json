@@ -6,5 +6,6 @@
   "/category/getCategory": "/categoryGetCategory",
   "/goods/getGoodsList": "/goodsGetGoodsList",
   "/goods/getGoodsListByKeyword": "/goodsGetGoodsList",
-  "/goods/getGoodsDetail": "/goodsGetGoodsList"
+  "/goods/getGoodsDetail": "/goodsGetGoodsList",
+  "/cart/add": "/cartAdd"
 }
