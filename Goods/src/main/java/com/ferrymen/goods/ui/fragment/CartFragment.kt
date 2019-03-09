@@ -2,6 +2,7 @@ package com.ferrymen.goods.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,19 +12,21 @@ import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ext.setVisible
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
 import com.ferrymen.core.utils.YuanFenConverter
+import com.ferrymen.core.widgets.AppPrefsUtils
 import com.ferrymen.goods.R
+import com.ferrymen.goods.common.GoodsConstant
 import com.ferrymen.goods.data.protocol.CartGoods
 import com.ferrymen.goods.event.CartAllCheckedEvent
+import com.ferrymen.goods.event.UpdateCartSizeEvent
 import com.ferrymen.goods.event.UpdateTotalPriceEvent
 import com.ferrymen.goods.injection.component.DaggerCartComponent
-import com.ferrymen.goods.injection.component.DaggerCategoryComponent
 import com.ferrymen.goods.injection.module.CartModule
-import com.ferrymen.goods.injection.module.CategoryModule
 import com.ferrymen.goods.presenter.CartListPresenter
 import com.ferrymen.goods.presenter.view.CartListView
 import com.ferrymen.goods.ui.adapter.CartGoodsAdapter
 import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.fragment_cart.*
+import org.jetbrains.anko.support.v4.toast
 
 /*
     商品分类 Fragment
@@ -46,12 +49,16 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        loadData()
         initObserve()
     }
 
+    override fun onStart() {
+        super.onStart()
+        loadData()
+    }
+
     private fun initView() {
-        mCartGoodsRv.layoutManager = LinearLayoutManager(context)
+        mCartGoodsRv.layoutManager = LinearLayoutManager(context) as RecyclerView.LayoutManager?
         mAdapter = CartGoodsAdapter(context!!)
         mCartGoodsRv.adapter = mAdapter
 
@@ -66,6 +73,19 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
             mAdapter.notifyDataSetChanged()
             updateTotalPrice()
         }
+
+        mDeleteBtn.onClick {
+            var cartIdList: MutableList<Int> = arrayListOf()
+
+            mAdapter.dataList.filter { it.isSelected }
+                    .mapTo(cartIdList) {it.id}
+
+            if (cartIdList.size == 0) {
+                toast("请选择要删除的数据")
+            } else {
+                mPresenter.deleteCartList(cartIdList)
+            }
+        }
     }
 
     private fun loadData() {
@@ -77,8 +97,13 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
             mAdapter.setData(result)
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
-//            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
+            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
+
+        AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE, result!!.size)
+        Bus.send(UpdateCartSizeEvent())
+
+        updateTotalPrice()
     }
 
     private fun initObserve() {
@@ -116,6 +141,11 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
         mDeleteBtn.setVisible(isEditStatus)
 
         mHeaderBar.getRightView().text = if (isEditStatus) getString(R.string.common_complete) else getString(R.string.common_edit)
+    }
+
+    override fun onDeleteCartResult(result: Boolean) {
+        toast("删除成功")
+        loadData()
     }
 
     override fun onDestroy() {

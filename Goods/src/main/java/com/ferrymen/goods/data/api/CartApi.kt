@@ -26,7 +26,7 @@ interface CartApi {
         删除购物车商品
      */
     @POST("cart/delete")
-    fun deleteCartList(@Body req: DeleteCartReq): Observable<BaseResp<String>>
+    fun deleteCartList(@Body req: DeleteCartReq): Observable<BaseResp<BaseRes>>
 
     /*
         提交购物车商品

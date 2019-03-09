@@ -5,4 +5,6 @@ import com.ferrymen.goods.data.protocol.CartGoods
 
 interface CartListView: BaseView {
     fun onGetCartListResult(result: MutableList<CartGoods>?)
+
+    fun onDeleteCartResult(result: Boolean)
 }

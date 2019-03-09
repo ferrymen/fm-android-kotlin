@@ -28,8 +28,9 @@ server.use(function (req, res, next) {
     if (req.method !== "GET") {
         req.method = "GET"
         if (req.path === "/cart/add") {
+            var cartListSize = db.get('cartList').size().value()
             db.get('cartList')
-              .push(req.body)
+              .push(Object.assign({}, req.body, {id: cartListSize++}))
               .write()
 
             db.get('cartAdd')
@@ -40,6 +41,21 @@ server.use(function (req, res, next) {
                     .value()
                   })
               .write()
+            } else if (req.path === "/cart/delete") {
+                db.get('cartList')
+                  .remove(function (item) {
+                    return req.body.cartIdList.indexOf(item.id) > -1
+                  })
+                  .write()
+
+                  db.get('cartAdd')
+                    .update('count', function () {
+                        return db
+                          .get('cartList')
+                          .size()
+                          .value()
+                        })
+                    .write()
             } else {
             for (var key in req.body) {
                 if (key === "keyword") {

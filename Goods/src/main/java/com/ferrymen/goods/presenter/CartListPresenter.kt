@@ -3,10 +3,12 @@ package com.ferrymen.goods.presenter
 import com.ferrymen.core.ext.execute
 import com.ferrymen.core.presenter.BasePresenter
 import com.ferrymen.core.rx.BaseSubscriber
+import com.ferrymen.goods.data.protocol.BaseRes
 import com.ferrymen.goods.data.protocol.CartGoods
 import com.ferrymen.goods.data.protocol.Category
 import com.ferrymen.goods.presenter.view.CartListView
 import com.ferrymen.goods.service.CartService
+import rx.Observable
 import javax.inject.Inject
 
 class CartListPresenter @Inject constructor(): BasePresenter<CartListView>() {
@@ -30,4 +32,23 @@ class CartListPresenter @Inject constructor(): BasePresenter<CartListView>() {
                     }
                 }, lifecycleProvider)
     }
+
+    fun deleteCartList(list: List<Int>) {
+
+        if (!checkNetWork()) {
+//            println("网络不可用")
+            return
+        }
+
+        mView.showLoading()
+        cartService
+                .deleteCartList(list)
+                .execute(object : BaseSubscriber<BaseRes>(mView) {
+                    override fun onNext(t: BaseRes) {
+                        super.onNext(t)
+                        mView.onDeleteCartResult(t.isSuccessed)
+                    }
+                }, lifecycleProvider)
+    }
+
 }

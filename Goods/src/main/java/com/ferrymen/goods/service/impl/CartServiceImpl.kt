@@ -1,7 +1,9 @@
 package com.ferrymen.goods.service.impl
 
 import com.ferrymen.core.ext.convert
+import com.ferrymen.core.ext.convertBoolean
 import com.ferrymen.goods.data.protocol.AddCartRes
+import com.ferrymen.goods.data.protocol.BaseRes
 import com.ferrymen.goods.data.protocol.CartGoods
 import com.ferrymen.goods.data.repository.CartRepository
 import com.ferrymen.goods.service.CartService
@@ -9,6 +11,7 @@ import rx.Observable
 import javax.inject.Inject
 
 class CartServiceImpl @Inject constructor(): CartService {
+
     @Inject
     lateinit var repository: CartRepository
 
@@ -19,6 +22,10 @@ class CartServiceImpl @Inject constructor(): CartService {
 
     override fun getCartList(): Observable<MutableList<CartGoods>?> {
         return repository.getCartList().convert()
+    }
+
+    override fun deleteCartList(list: List<Int>): Observable<BaseRes> {
+        return repository.deleteCartList(list).convert()
     }
 
 

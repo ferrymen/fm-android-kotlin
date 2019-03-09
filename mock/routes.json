@@ -8,5 +8,6 @@
   "/goods/getGoodsListByKeyword": "/goodsGetGoodsList",
   "/goods/getGoodsDetail": "/goodsGetGoodsList",
   "/cart/add": "/cartAdd",
-  "/cart/getList": "/cartList"
+  "/cart/getList": "/cartList",
+  "/cart/delete": "/cartDelete"
 }

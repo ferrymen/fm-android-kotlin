@@ -33,7 +33,7 @@ class CartRepository @Inject constructor() {
     /*
         删除购物车商品
      */
-    fun deleteCartList(list: List<Int>): Observable<BaseResp<String>> {
+    fun deleteCartList(list: List<Int>): Observable<BaseResp<BaseRes>> {
         return RetrofitFactory.instance.create(CartApi::class.java).deleteCartList(DeleteCartReq(list))
     }
 
