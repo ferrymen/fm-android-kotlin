@@ -110,6 +110,7 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
             mAdapter.setData(result)
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
             mHeaderBar.getRightView().setVisible(true)
+            mAllCheckedCb.isChecked = false
         } else {
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
             mHeaderBar.getRightView().setVisible(false)
@@ -166,6 +167,10 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
 
     override fun onSubmitCartResult(result: Int) {
         toast("$result")
+    }
+
+    fun setBackVisible(isVisable: Boolean) {
+        mHeaderBar.getLeftView().setVisible(isVisable)
     }
 
     override fun onDestroy() {

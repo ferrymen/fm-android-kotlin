@@ -16,6 +16,7 @@ import com.ferrymen.goods.ui.adapter.GoodsDetailVpAdapter
 import com.ferrymen.provider.common.afterLogin
 import com.ferrymen.provider.common.isLogined
 import kotlinx.android.synthetic.main.activity_goods_detail.*
+import org.jetbrains.anko.startActivity
 import q.rorbin.badgeview.QBadgeView
 
 class GoodsDetailActivity: BaseActivity() {
@@ -41,6 +42,14 @@ class GoodsDetailActivity: BaseActivity() {
             afterLogin {
                 Bus.send(AddCartEvent())
             }
+        }
+
+        mEnterCartTv.onClick {
+            startActivity<CartActivity>()
+        }
+
+        mLeftIv.onClick {
+            finish()
         }
 
         mCartBadge = QBadgeView(this)
