@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ferrymen.core.ext.setVisible
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
 import com.ferrymen.goods.R
 import com.ferrymen.goods.data.protocol.Category
@@ -48,15 +49,33 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
     }
 
     override fun onGetCategoryResult(result: MutableList<Category>?) {
-        result?.let {
-            if (it[0].parentId == 0) {
-                it[0].isSelected = true
-                topAdapter.setData(it)
-                loadData(it[0].id)
+//        result?.let {
+//            if (it[0].parentId == 0) {
+//                it[0].isSelected = true
+//                topAdapter.setData(it)
+//                loadData(it[0].id)
+//            } else {
+//                secondAdapter.setData(it)
+//                mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
+//            }
+//        }
+
+        if (result != null && result.size > 0) {
+            if (result[0].parentId == 0) {
+                result[0].isSelected = true
+                topAdapter.setData(result)
+                mPresenter.getCategory(result[0].id)
             } else {
-                secondAdapter.setData(it)
+                secondAdapter.setData(result)
+                mTopCategoryIv.setVisible(true)
+                mCategoryTitleTv.setVisible(true)
                 mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
             }
+        } else {
+            //没有数据
+            mTopCategoryIv.setVisible(false)
+            mCategoryTitleTv.setVisible(false)
+            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
     }
 
