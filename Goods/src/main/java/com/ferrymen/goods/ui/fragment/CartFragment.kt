@@ -10,6 +10,7 @@ import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.ferrymen.core.ext.onClick
 import com.ferrymen.core.ext.setVisible
+import com.ferrymen.core.ext.startLoading
 import com.ferrymen.core.ui.fragment.BaseMVPFragment
 import com.ferrymen.core.utils.YuanFenConverter
 import com.ferrymen.core.widgets.AppPrefsUtils
@@ -102,6 +103,7 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
     }
 
     private fun loadData() {
+        mMultiStateView.startLoading()
         mPresenter.getCartList()
     }
 
@@ -161,8 +163,8 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
 
     override fun onDeleteCartResult(result: Boolean) {
         toast("删除成功")
-        loadData()
         refreshEditStatus()
+        loadData()
     }
 
     override fun onSubmitCartResult(result: Int) {

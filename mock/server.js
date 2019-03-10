@@ -4,6 +4,7 @@ var fs = require('fs'),
   server = jsonServer.create(),
   router = jsonServer.router('db.json'),
   middlewares = jsonServer.defaults(),
+  pause = require('connect-pause')
   routes = require('./routes.json');
 
 var low = require('lowdb')
@@ -20,6 +21,7 @@ var options = {
 
 // Add this before server.use(router)
 server.use(jsonServer.bodyParser)
+server.use(pause(100))
 server.use(middlewares);
 server.use(function (req, res, next) {
     console.log("body::")
