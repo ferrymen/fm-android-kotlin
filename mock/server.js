@@ -62,14 +62,14 @@ server.use(function (req, res, next) {
               .push(Object.assign({}, req.body, {id: cartListSize++}))
               .write()
 
-            db.get('cartAdd')
-              .update('count', function () {
-                  return db
-                    .get('cartList')
-                    .size()
-                    .value()
-                  })
-              .write()
+//            db.get('cartAdd')
+//              .update('count', function () {
+//                  return db
+//                    .get('cartList')
+//                    .size()
+//                    .value()
+//                  })
+//              .write()
             } else if (req.path === "/cart/delete") {
                 db.get('cartList')
                   .remove(function (item) {
@@ -77,14 +77,14 @@ server.use(function (req, res, next) {
                   })
                   .write()
 
-                  db.get('cartAdd')
-                    .update('count', function () {
-                        return db
-                          .get('cartList')
-                          .size()
-                          .value()
-                        })
-                    .write()
+//                  db.get('cartAdd')
+//                    .update('count', function () {
+//                        return db
+//                          .get('cartList')
+//                          .size()
+//                          .value()
+//                        })
+//                    .write()
             } else {
                 for (var key in req.body) {
                     if (key === "keyword") {
@@ -132,6 +132,8 @@ router.render = (req, res) => {
        status = -1
        message = "用户不存在，请先注册"
    }
+} else if (req.originalUrl === "/cart/add") {
+    data = {count: db.get('cartList').size().value()}
 } else if (req.originalUrl === "/goods/getGoodsDetail" && Array.isArray(data)) {
     data = data[0]
     data["goodsSku"] = db.get('goodsSku')
