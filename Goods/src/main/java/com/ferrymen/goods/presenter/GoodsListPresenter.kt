@@ -19,12 +19,13 @@ class GoodsListPresenter @Inject constructor(): BasePresenter<GoodsListView>() {
             return
         }
 
-        mView.showLoading()
+        // 只有在调试模式下，商品页才能触发点击事件的原因是因为showLoading
+//        mView.showLoading()
         goodsService
                 .getGoodsList(categoryId, pageNo)
                 .execute(object : BaseSubscriber<MutableList<Goods>?>(mView) {
                     override fun onNext(t: MutableList<Goods>?) {
-                        super.onNext(t)
+//                        super.onNext(t)
                         mView.onGetGoodsListResult(t)
                     }
                 }, lifecycleProvider)
@@ -37,7 +38,8 @@ class GoodsListPresenter @Inject constructor(): BasePresenter<GoodsListView>() {
             return
         }
 
-        mView.showLoading()
+        // 只有在调试模式下，商品页才能触发点击事件的原因是因为showLoading
+//        mView.showLoading()
         goodsService
                 .getGoodsListByKeyword(keyword, pageNo)
                 .execute(object : BaseSubscriber<MutableList<Goods>?>(mView) {

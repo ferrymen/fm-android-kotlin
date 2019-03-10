@@ -18,6 +18,7 @@ import com.ferrymen.goods.ui.adapter.SecondCategoryAdapter
 import com.ferrymen.goods.ui.adapter.TopCategoryAdapter
 import com.kennyc.view.MultiStateView
 import com.ferrymen.core.ui.adapter.BaseRecyclerViewAdapter
+import com.ferrymen.goods.common.GoodsConstant
 import kotlinx.android.synthetic.main.fragment_category.*
 import org.jetbrains.anko.support.v4.startActivity
 
@@ -28,7 +29,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
     //一级分类Adapter
     lateinit var topAdapter: TopCategoryAdapter
     //二级分类Adapter
-    lateinit var secondAdapter: SecondCategoryAdapter
+    private lateinit var secondAdapter: SecondCategoryAdapter
 
     override fun injectComponent() {
         DaggerCategoryComponent.builder().activityComponent(activityComponent).categoryModule(CategoryModule()).build().inject(this)
@@ -81,7 +82,7 @@ class CategoryFragment : BaseMVPFragment<CategoryPresenter>(), CategoryView {
         mSecondCategoryRv.adapter = secondAdapter
         secondAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Category> {
             override fun onItemClick(item: Category, position: Int) {
-                startActivity<GoodsActivity>("categoryId" to item.id)
+                startActivity<GoodsActivity>(GoodsConstant.KEY_CATEGORY_ID to item.id)
             }
         })
     }
