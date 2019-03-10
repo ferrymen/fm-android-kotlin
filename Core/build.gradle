@@ -108,7 +108,7 @@ dependencies {
     api "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
 
     //上下拉刷新
-//    implementation "cn.bingoogolapple:bga-refreshlayout:$refreshlayout_version"
+    api "cn.bingoogolapple:bga-refreshlayout:$refreshlayout_version"
 
     //FlowLayout
     api 'com.zhy:flowlayout-lib:1.0.3'
