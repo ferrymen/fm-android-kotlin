@@ -69,7 +69,7 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
 
         mAllCheckedCb.onClick {
             for (item in mAdapter.dataList) {
-                item.isSelected = mAllCheckedCb.isSelected
+                item.isSelected = mAllCheckedCb.isChecked
             }
             mAdapter.notifyDataSetChanged()
             updateTotalPrice()
@@ -130,7 +130,7 @@ class CartFragment : BaseMVPFragment<CartListPresenter>(), CartListView {
 //                    t: CartAllCheckedEvent -> run {
 //                    mAllCheckedCb.isSelected = t.isAllChecked
 //                }
-                    mAllCheckedCb.isSelected = it.isAllChecked
+                    mAllCheckedCb.isChecked = it.isAllChecked
                     updateTotalPrice()
                 }
                 .registerInBus(this)
